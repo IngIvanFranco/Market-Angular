@@ -1,0 +1,11 @@
+.contenedor{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px auto;
+}
+
+h3{
+  text-align: center;
+  margin: 20px auto;
+}

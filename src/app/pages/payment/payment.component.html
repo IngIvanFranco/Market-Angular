@@ -1,0 +1,83 @@
+<div class="container">
+
+
+
+<div class="card mb-3" style="max-width: 600px; margin: auto;" *ngIf="order[0].metodo_pago=='1'" >
+  <div class="row g-0" >
+    <div class="col-md-4" >
+      <img src="{{path}}/img/payment-method/1.png" class="img-fluid rounded-start" alt="..." >
+
+    </div>
+    <div class="col-md-8">
+      <div class="card text-white bg-primary mb-3" style="width: 100%; height: 100%;">
+        <div class="card-header">Tu numero de orden es: #{{order[0].id}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Estas mas cerca de tus sueños</h5>
+          <p class="card-text">Acercate a tu punto Gana-Gana mas cercano y entregale al asesor tu numero de orden junto al valor a cancelar $ {{order[0].total_price | number}} Cop. y espera tu pedido que se encuentra en camino</p>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card mb-3" style="max-width: 600px; margin: auto;" *ngIf="order[0].metodo_pago==2">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{path}}/img/payment-method/2.png" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card text-white bg-primary mb-3" style="width: 100%; height: 100%;">
+        <div class="card-header">Tu numero de orden es: #{{order[0].id}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Estas mas cerca de tus sueños</h5>
+          <p class="card-text">Tu orden se ha creado y esta en proceso por un valor de $ {{order[0].total_price | number}} Cop.
+            <br> Pronto un asesor de Su Solucion te contactara para ultimar detalles .</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card mb-3" style="max-width: 600px; margin: auto;" *ngIf="order[0].metodo_pago == 3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{path}}/img/payment-method/3.png" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card text-white bg-primary mb-3" style="width: 100%; height: 100%;">
+        <div class="card-header">Tu numero de orden es: #{{order[0].id}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Estas mas cerca de tus sueños</h5>
+          <p class="card-text">Tu orden se ha creado y esta en proceso por un valor de $ {{order[0].total_price | number}} Cop.
+            <br> Pronto un asesor de el Fondo de empleados te contactara para ultimar detalles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3" style="max-width: 600px; margin: auto;" *ngIf="order[0].metodo_pago==4">
+  <div class="row g-0">
+    <div class="col-md-4">
+    <a href="https://www.avalpaycenter.com/wps/portal/portal-de-pagos/web/ventanilla-pagos/realizar-pago?idConv=00015298">  <img src="{{path}}/img/payment-method/4.png" class="img-fluid rounded-start pse" alt="..."></a>
+    </div>
+    <div class="col-md-8">
+      <div class="card text-white bg-primary mb-3" style="width: 100%; height: 100%;">
+        <div class="card-header">Tu numero de orden es: #{{order[0].id}}<br>El valor a pagar es: ${{order[0].total_price | number}} Cop</div>
+        <div class="card-body">
+          <h5 class="card-title">Estas mas cerca de tus sueños</h5>
+          <p class="card-text">Ten a la mano los anteriores datos para realizar tu pago, una vez terminado el proceso
+            te redireccionaremos a la pagina inicial.<br> A tu correo llegarta toda la informacion correspondiente a la orden de compra.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contenbtn">
+<button type="button" routerLink="/" class="btn btn-success">Inicio</button>
+</div>
+</div>

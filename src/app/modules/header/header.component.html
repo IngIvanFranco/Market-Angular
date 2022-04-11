@@ -1,0 +1,227 @@
+<!--=====================================
+	Header
+	======================================-->
+
+    <header class="header header--standard header--market-place-4" data-sticky="true">
+
+    	<!--=====================================
+		Header TOP
+		======================================-->
+
+        <div class="header__top">
+
+            <div class="container">
+
+            	<!--=====================================
+				Social
+				======================================-->
+
+                <div class="header__left">
+                    <ul class="d-flex justify-content-center">
+						<li><a href="#" target="_blank"><i class="fab fa-facebook-f mr-4"></i></a></li>
+						<li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>
+
+
+					</ul>
+                </div>
+
+                <!--=====================================
+				Contact & lenguage
+				======================================-->
+
+                <div class="header__right">
+                    <ul class="header__top-links">
+                       <!-- <li><a href="#">Sell on MarketPlace</a></li>-->
+                        <li><a  href="#">Nuestra Tienda</a></li>
+                    	<li><i class="icon-telephone"></i> Contacto:<strong>  (+57) 314 358 06 19</strong></li>
+                        <li>
+                           <!-- <div class="ps-dropdown language"><a href="#"><img src="{{path}}img/template/en.png" alt="">English</a>
+                                <ul class="ps-dropdown-menu">
+                                    <li><a href="#"><img src="{{path}}img/template/es.png" alt=""> Spanish</a></li>
+                                </ul>
+                            </div> -->
+                        </li>
+                    </ul>
+                </div>
+
+            </div><!-- End Container -->
+
+        </div><!-- Header Top -->
+
+      	<!--=====================================
+		Header Content
+		======================================-->
+
+        <div class="header__content">
+
+            <div class="container">
+
+                <div class="header__content-left">
+
+                	<!--=====================================
+					Logo
+					======================================-->
+
+                	<button (click)="volver()" class="btns"  >
+                		<img src="{{path}}/img/template/inver_ligth.png" alt="">
+                	</button>
+
+                	<!--=====================================
+					Menú
+					======================================-->
+
+                    <div class="menu--product-categories">
+
+                        <div class="menu__toggle">
+                        	<i class="icon-menu"></i>
+                        	<span> Compra por categoria</span>
+                        </div>
+
+                        <div class="menu__content">
+                            <ul class="menu--dropdown">
+
+                                <li
+                                *ngFor="let category of categories; let i = index; let lastIndex = last"
+                                class="menu-item-has-children has-mega-menu">
+
+                                    <a class="cate" routerLink="products/{{category.id_categoria}}">
+                                        <i class="icon-laundry"></i> {{category.nombre_categoria}}
+                                    </a>
+
+                                    <div class="mega-menu">
+
+                                        <div
+
+                                        class="mega-menu__column">
+
+                                            <h4>
+                                                <span class="sub-toggle"></span>
+                                            </h4>
+
+                                            <ul class="mega-menu__list" >
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </li>
+
+
+
+                            </ul>
+
+                        </div>
+
+                    </div><!-- End menu-->
+
+                </div><!-- End Header Content Left-->
+
+                <!--=====================================
+				Search
+				======================================-->
+
+                <div class="header__content-center">
+                    <form class="ps-form--quick-search" >
+                        <div class="form-group--icon">
+                        	<i class="icon-chevron-down"></i>
+                            <select class="form-control">
+                                <option value="1">Todo </option>
+
+                            </select>
+                        </div>
+                        <input class="form-control" type="text" id="q" placeholder="Cual es tu sueño?...">
+                        <button class="btn btn-dark btn-lg" (click)="recibirconsulta()" >Buscar</button>
+                    </form>
+                </div>
+
+                <div class="header__content-right">
+
+                    <div class="header__actions">
+
+                    	<!--=====================================
+						Wishlist
+						======================================-->
+                      <!--
+                    	<a class="header__extra" href="#">
+                    		<i class="icon-heart"></i><span><i>0</i></span>
+                    	</a>
+                      -->
+                    	<!--=====================================
+						Cart
+						======================================-->
+
+                        <div class="ps-cart--mini">
+
+                        	<a class="header__extra" routerLink="/viewcart">
+                        		<i class="icon-bag2"></i><span><i>{{cart.length}}</i></span>
+                        	</a>
+
+                            <div class="ps-cart__content con" >
+
+                                <div class="ps-cart__items " *ngFor="let item of cart, let i=index" >
+
+                                    <div class="ps-product--cart-mobile"  >
+
+                                        <div class="ps-product__thumbnail">
+                                        	<a routerLink="product/{{item.id}}">
+                                        		<img src="{{path}}/img/products/product/{{item.id}}.jpg" alt="">
+                                        	</a>
+                                        </div>
+
+                                        <div class="ps-product__content">
+                                        	<a class="ps-product__remove" (click)="elimaritem(i)">
+                                        		<i class="icon-cross"></i>
+                                        	</a>
+                                        	<a routerLink="product/{{item.id}}">{{item.name}}</a>
+                                            <p><strong>Cantidad:</strong> {{item.qty}}</p>
+                                            <small> $ {{(item.qty * item.price) | number }} Cop</small>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="ps-cart__footer">
+                                    <figure>
+                                    	<a class="ps-btn" routerLink="/viewcart">View Cart</a>
+                                    	<a class="ps-btn" routerLink="/checkout">Checkout</a>
+                                    </figure>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+						<!--=====================================
+						Login and Register
+						======================================-->
+
+                        <div class="ps-block--user-header">
+                            <div class="ps-block__left">
+                            	<i class="icon-user"></i>
+                            </div>
+                            <div class="ps-block__right">
+                            	<a routerLink="/login" >MI cuenta</a>
+
+                            </div>
+                        </div>
+
+                    </div><!-- End Header Actions-->
+
+                </div><!-- End Header Content Right-->
+
+            </div><!-- End Container-->
+
+        </div><!-- End Header Content-->
+
+    </header>
+
+
+

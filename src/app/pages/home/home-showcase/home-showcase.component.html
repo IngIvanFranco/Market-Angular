@@ -1,0 +1,18 @@
+
+<h2>Promociones</h2>
+  <div  class="cont">
+
+    <div class="card" style="width: 18rem;" *ngFor="let producto of productos">
+     <a routerLink="product/{{producto.id}}" >
+       <img src="{{path}}/img/products/product/{{producto.id}}.jpg" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{producto.name}}</h5>
+        <p class="card-text desc">-{{producto.descuento}}% off</p>
+        <p class="card-text">$ {{producto.price | number | lowercase}}</p>
+
+        <button class="btn btn-primary" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.id_opc_subcate)">Add Cart</button>
+      </div>
+    </div>
+</div>
+

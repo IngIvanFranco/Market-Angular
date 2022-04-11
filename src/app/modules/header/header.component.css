@@ -1,0 +1,41 @@
+header{
+
+}
+
+.header__top{
+  background: #2b6109;
+  color: rgb(207, 207, 207);
+}
+
+
+.header__content{
+  background: #3a850b;
+  color: rgb(207, 207, 207);
+}
+
+
+button{
+  background: #eb7d46;
+}
+
+
+.cate{
+text-transform: capitalize;
+}
+
+.btn{
+  
+  font-size: 18px;
+  
+}
+
+.btns{
+  background: none;
+  border: none;
+}
+
+.con{
+  
+  max-height: 400px;
+  overflow-y: auto;
+}

@@ -1,0 +1,52 @@
+<div class="container" *ngIf="cart.length > 0">
+
+<div class="cardc" >
+
+            <div class="card mb-3" style="max-width: 540px;" *ngFor="let item of cart let i=index">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="{{path}}/img/products/product/{{item.id}}.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">$ {{(item.qty * item.price) | number}}</p>
+
+                      <label for="validationDefault01" class="form-label">Cantidad</label>
+                      <input type="number" (change)="cambiar(i)"  class="form-control" id="cantidad{{i}}" value="{{item.qty}}" >
+                      <button type="button" (click)="eliminaritem(i)" class="btn btn-danger"  >Eliminar</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+        <div class="cardc">
+          <div class="card mb-3">
+            <img src="{{path}}/img/payment-method/banner.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Precio total:</h5>
+              <p class="card-text"> ${{vlrtotal | number}} Cop</p>
+              <button type="button" routerLink="/checkout" class="btn btn-success">Pagar</button>
+              <button type="button" routerLink="/" class="btn btn-primary">Volver</button>
+            </div>
+          </div>
+
+</div>
+</div>
+
+<div class="container2" *ngIf="cart.length == 0">
+<div class="it" >
+  <div class="card mb-3">
+    <img src="{{path}}/img/payment-method/banner.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Carrito sin Productos:</h5>
+      <p class="card-text">  </p>
+      <button type="button" routerLink="/" class="btn btn-primary">Volver</button>
+    </div>
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,16 @@
+.contenedor{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 25px auto;
+}
+
+h3{
+  text-align: center;
+  margin: 25px auto;
+}
+
+.price{
+  text-align: center;
+  font-weight: bold;
+}

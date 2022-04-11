@@ -1,0 +1,47 @@
+<div class="conten" >
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">{{producto[0].name}}</h5>
+    </div>
+    <div class="card-body">
+
+
+      <h5 class="card-title">Descripcion:</h5>
+      <p class="card-text">{{producto[0].description}}</p>
+      
+ 
+      <h5 class="card-title">Precio:</h5>
+      <p class="card-text">$ {{producto[0].price | number}} Cop</p>
+
+      <div class="descuento" *ngIf="producto[0].descuento > 0">
+      <h5 class="card-title">Descuento:</h5>
+      <p class="card-text"> -{{producto[0].descuento}}% Off</p>
+    </div>
+
+
+
+  <h5 class="card-title">Medios de pago:</h5>
+
+      <p class="card-text"> 
+         <img src="{{path}}/img/payment-method/1.png" class="icon" srcset=""> 
+        <img src="{{path}}/img/payment-method/5.jpg" alt="" srcset=""> 
+        <img src="{{path}}/img/payment-method/3.png" class="icon" srcset=""> 
+        <img src="{{path}}/img/payment-method/3.jpg" alt="" srcset=""> 
+        <img src="{{path}}/img/payment-method/2.png" class="icon" srcset=""> 
+        <img src="{{path}}/img/payment-method/4.png" class="icon" srcset=""> 
+      </p>
+      
+      <h5 class="card-title">Stock disponible:</h5>
+      <p class="card-text" *ngIf="producto[0].inventario==1">{{producto[0].stok}} Unidades disponibles</p>
+      <p class="card-text" *ngIf="producto[0].inventario==0">Disponibibilidad segun proveedor</p>
+      <h5 class="card-title">Duracion de la entrega:</h5>
+      <p class="card-text"> 1 a 3 dias habiles</p>
+    </div>
+  </div>
+  <div class="card ">
+<img src="{{path}}/img/products/product/{{producto[0].id}}.jpg" class="imgp" alt="...">
+<a (click)="addcart(producto[0].id,producto[0].name,producto[0].price,producto[0].descuento,producto[0].talla)" class="btn btn-primary">Add Cart</a>
+</div>
+</div>
+
+ 

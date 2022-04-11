@@ -1,0 +1,39 @@
+form{
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  border: 1px solid #ccc;
+  padding: 50px;
+}
+
+.container{
+  margin: 20px auto;
+}
+
+.conbtn{
+display: flex;
+justify-content: space-around;
+   
+}
+button[type=submit]{
+  display: none;
+  margin: 25px auto;
+}
+
+
+#check:checked ~ button[type=submit]{
+  display: block;
+}
+
+.alert{
+  margin: 20px auto;
+  text-align: center;
+}
+
+.btn{
+font-size: 14px;
+}
+
+h2{
+  text-align: center;
+}

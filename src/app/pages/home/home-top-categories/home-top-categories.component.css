@@ -1,0 +1,9 @@
+p{
+    text-transform: capitalize;
+}
+
+.cont{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}

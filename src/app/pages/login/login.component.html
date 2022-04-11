@@ -1,0 +1,71 @@
+<div class="contenedor">
+
+
+<form  [formGroup]="grupoformlogin" (ngSubmit)="logear()" *ngIf="sessionini==false">
+
+  <div class="row mb-3">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" formControlName="usr" class="form-control" id="inputEmail3"  >
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" formControlName="pass" class="form-control" id="inputPassword3"  >
+    </div>
+     <p class="card-text"><small class="text-muted" ><a routerLink="/register">No tienes una cuenta?</a><br><a href=""> Olvidaste tu contraseña?</a></small></p>
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="alerta==true">
+   Error en los datos, verifica tu correo y/o contrasena
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="sessionini==true">
+    Ya tienes una sesion iniciada {{customer[0].name}} </div>
+  <div class="contbtn">
+  <button type="submit" class="btn btn-success" *ngIf="sessionini==false">Ingresar</button>
+
+  <a routerLink="" class="btn btn-warning">Cancelar</a>
+</div>
+</form>
+
+
+
+<div class="card mb-3" style="max-width: 540px;" *ngIf="sessionini==true" >
+  <div class="row g-0">
+    <div class="col-md-4">
+
+      <img src="{{path}}/img/icons/User_with_smile.svg.png" class="img-fluid rounded-start" alt="...">
+      <div class="contbtn">
+      <button type="button" (click)="cerrarsesion()" class="btn btn-danger" >Cerrar sesion</button>
+
+    </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Datos de usuario</h5>
+        <p class="card-text">Nombre: {{customer[0].name}}.</p>
+        <p class="card-text">Correo: {{customer[0].email}}.</p>
+        <p class="card-text">Telefono: {{customer[0].phone}}.</p>
+        <p class="card-text">Documento: {{customer[0].identificacion_cliente | number}}.</p>
+        <p class="card-text">Direccion: {{customer[0].city}}, {{customer[0].address}}</p>
+
+        <div class="contbtn">
+          <button type="button"  class="btn btn-success" >Editar</button>
+
+          <a routerLink="/profile" type="button" class="btn btn-info">Historial</a>
+
+        </div>
+        <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>

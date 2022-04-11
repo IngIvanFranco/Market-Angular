@@ -1,0 +1,14 @@
+.img404{
+  width: 50%;
+  margin: 50px 25%;
+}
+h3{
+  text-align: center;
+  text-transform: capitalize;
+  margin: 10px auto;
+  color:#F47665 ;
+  background-color: #ccc;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+}

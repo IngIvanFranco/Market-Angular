@@ -1,0 +1,54 @@
+.conten{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px auto;
+}
+
+.card{
+  width: 45%;
+}
+
+.imgp{
+  max-height: 400px;
+  max-width: 400px;
+
+  display: block;
+  margin: auto;
+  transition: 0.5s all;
+}
+
+.imgp:hover{
+  transform: scale(1.3);
+}
+
+.icon{
+  height: 30px;
+}
+.descuento{
+  margin: 10px 0;
+}
+.btn{
+width: 30%;
+margin:  10px auto;
+color: white;
+}
+
+.card-title{
+  text-transform: uppercase;
+}
+
+.spin{
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 50px auto;
+}
+
+
+
+@media (max-width: 600px) {
+  .card{
+    width: 100%;
+  }
+}

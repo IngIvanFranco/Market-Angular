@@ -1,0 +1,16 @@
+
+.header__top{
+  background: #2b6109;
+  color: rgb(207, 207, 207);
+}
+
+
+.navigation--mobile, .ps-search--mobile{
+  background: #3a850b;
+  color: rgb(207, 207, 207);
+}
+
+
+.categ{
+text-transform: capitalize;
+}

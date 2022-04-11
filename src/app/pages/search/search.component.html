@@ -1,0 +1,22 @@
+
+
+ <div  class="cont" *ngIf="carga==true">
+
+  <div class="card" style="width: 18rem;" *ngFor="let producto of productos">
+   <a routerLink="/product/{{producto.id}}" >
+     <img src="{{path}}/img/products/product/{{producto.id}}.jpg" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{producto.name}}</h5>
+      <p class="card-text desc" *ngIf="producto.descuento > 0">-{{producto.descuento}}% off</p>
+      <p class="card-text">$ {{producto.price | number | lowercase}}</p>
+
+      <button class="btn btn-primary" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.id_opc_subcate)">Add Cart</button>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex align-items-center" *ngIf="carga == false" >
+  <strong>Loading...</strong>
+  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+</div>

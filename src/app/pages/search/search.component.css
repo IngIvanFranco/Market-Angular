@@ -1,0 +1,27 @@
+.cont{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 50px auto;
+    }
+    
+    .card{
+    margin: 10px;
+    }
+    
+    h2{
+      text-align: center;
+      margin: 20px;
+    }
+    
+    .desc{
+    background-color: #000;
+    color: white;
+    width: 50%;
+    border-radius: 5px;
+    }
+    
+    .card-title{
+      text-transform: uppercase;
+    }

@@ -1,0 +1,11 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px auto;
+}
+
+.card{
+  width: 45%;
+  text-align: justify;
+}

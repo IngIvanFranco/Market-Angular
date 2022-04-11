@@ -1,0 +1,57 @@
+table{
+  width: 80%;
+  margin: 25px auto;
+  border: 1px solid #ccc;
+
+}
+
+h2{
+  margin: 25px auto;
+  text-align: center;
+}
+
+.contenbtn{
+  width: 80%;
+  margin: 20px auto;
+display: flex;
+justify-content: space-between;
+
+padding: 10px;
+border-radius: 10px;
+}
+
+.btn{
+font-size: 14px;
+font-weight: bold;
+}
+form{
+  width: 80%;
+  
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin:10px auto;
+}
+
+.inputs{
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin:10px auto;
+}
+
+
+.icon{
+  height: 50px;
+}
+
+.metodospago{
+  width: 80%;
+  margin: 25px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 1px solid #ccc;
+  padding: 20px;
+}

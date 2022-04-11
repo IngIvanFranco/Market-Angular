@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>PQRS</h2>
+
+  <form [formGroup]="formulariopqr" (ngSubmit)="validacion()">
+    
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"># Identificacion</label>
+      <input type="number" class="form-control" formControlName="identificacion" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Correo</label>
+      <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">celular</label>
+      <input type="number" class="form-control" formControlName="celular" id="exampleInputEmail1" aria-describedby="emailHelp">
+      
+    </div>
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="Como podemos ayudarte?" formControlName="peticion" id="floatingTextarea2" style="height: 100px"></textarea>
+      
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="validator==true">
+     Debes ingresas toda la informacion requerida 
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="check">
+      <label class="form-check-label" for="check"> Aceptó consentimiento y politicas en ley de protección de datos personales.</label>
+      <button type="submit" class="btn btn-success">Enviar</button>
+    </div>
+    
+  </form>
+
+
+</div>
