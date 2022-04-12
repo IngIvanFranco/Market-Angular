@@ -19,6 +19,9 @@ import { TratamientodatosComponent } from './pages/tratamientodatos/tratamientod
 import { PqrsComponent } from './pages/pqrs/pqrs.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component';
+import { CheckoutGuard } from './guards/checkout.guard';
+import { CartGuard } from './guards/cart.guard';
+import { CheckGuard } from './guards/check.guard';
 
 const routes: Routes = [
 
@@ -26,19 +29,19 @@ const routes: Routes = [
 	{path: 'products/:id', component: ProductsComponent },
 	{path: 'product/:id', component: ProductComponent },
 	{path: 'search/:q', component: SearchComponent },
-  {path: 'viewcart', component: ViewcartComponent},
+  {path: 'viewcart', component: ViewcartComponent,canActivate:[CartGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'my-account', component: MyAccountComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'checkout', component: CheckoutComponent},
+  {path: 'checkout', component: CheckoutComponent, canActivate:[CheckoutGuard,CheckGuard] },
   {path: 'payment/:id', component: PaymentComponent},
   {path: 'about', component: AboutComponent},
   {path: 'garantia', component: GarantiaComponent},
   {path: 'terminos-condiciones', component: TerminosComponent},
   {path: 'tratamiento-datos', component: TratamientodatosComponent},
   {path: 'pqrs', component: PqrsComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'order/:id', component: OrderdetailComponent},
+  {path: 'profile', component: ProfileComponent, canActivate:[CheckoutGuard]},
+  {path: 'order/:id', component: OrderdetailComponent, canActivate:[CheckoutGuard]},
 	{path: '**', pathMatch:'full', component: Error404Component }
 
 

@@ -21,28 +21,20 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     Loading.standard('cargando')
-   
-    if ( sessionStorage.getItem('usr') === null ) {
-      Loading.remove()
-      this.rutas.navigateByUrl('/login')
-      Notify.warning('Debes Iniciar Sesion primero')
-      
-    }else{
-      
     this.customer=sessionStorage.getItem('usr');
     this.servicio.listadoordenescliente(this.customer).subscribe(res=>{
       this.ordenes=res
      console.log(this.ordenes);
      Loading.remove()
     })
-   
-    }
+
+
 
 
   }
 
 
 
- 
+
 
 }

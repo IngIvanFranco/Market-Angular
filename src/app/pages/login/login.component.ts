@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   alerta:boolean=false
   sessionini:boolean
   idus:any
+  token:any
 
   constructor(
     public FormBuilder:FormBuilder,
@@ -53,8 +54,6 @@ this.servicio.consultarusr(this.idus).subscribe(res=>{
 
 
 
-
-
 }
 
 
@@ -62,6 +61,13 @@ this.servicio.consultarusr(this.idus).subscribe(res=>{
 
 
   logear():any{
+
+
+
+
+
+
+
 
  this.servicio.login(this.grupoformlogin.value).subscribe(res=>{
 this.customer=res
@@ -75,11 +81,15 @@ if (this.customer['success']==0) {
   this.alerta=false;
 this.sessionini=true
 sessionStorage.setItem('usr',this.customer[0].id)
+
+this.consultarggpoin(this.customer[0].identificacion_cliente)
 Notify.info(
 
   `Bienvenido ${this.customer[0].name}`,
 
 )
+
+
 this.rutas.navigateByUrl('/viewcart');
 }
 })
@@ -94,6 +104,28 @@ this.rutas.navigateByUrl('/viewcart');
     Loading.remove(1023)
   }
 
+
+
+
+  consultarggpoin(id:any){
+
+
+this.servicio.consultartokenggpoint().subscribe(res=>{
+  this.token=res
+
+  this.servicio.consultarggpoint(this.token.token,id).subscribe(res=>{
+
+
+    if (!res) alert('no es cliente gana gana '+res);
+
+    else{alert('cliente gana gana');
+
+    }
+
+  })
+
+})
+  }
 
 
 }

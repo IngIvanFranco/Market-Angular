@@ -30,6 +30,7 @@ export class ViewcartComponent implements OnInit {
     this.valortotal(this.cart)
     this.cargue()
 
+
   }
 
 cambiar(id:any){
@@ -77,6 +78,7 @@ this.valortotal(this.cart)
 }
 
 cargue(){
+
   Loading.remove()
 }
 

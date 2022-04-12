@@ -50,11 +50,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('usr') === null) {
-     Notify.warning('Debes inciar sesion')
-      this.rutas.navigateByUrl('/login')
-
-    } else {
 
       let usr = sessionStorage.getItem('usr');
       this.usrid = usr
@@ -72,12 +67,8 @@ export class CheckoutComponent implements OnInit {
 
 
       })
-    }
 
-    if (this.cart.length == 0) {
-     Notify.warning('No cuentas con articulos en el carrito de compras')
-      this.rutas.navigateByUrl('/login')
-    }
+
 
 
 
@@ -86,6 +77,14 @@ export class CheckoutComponent implements OnInit {
 
 
   crearorden() {
+
+    if (this.cart.length == 0) {
+
+         Notify.failure('No tienes Productos')
+         this.rutas.navigateByUrl('viewcart')
+    } else {
+
+
 
     if (this.formulariodeorden.valid) {
       Loading.standard('Generando orden')
@@ -100,7 +99,7 @@ export class CheckoutComponent implements OnInit {
       this.validacionform = true
 
     }
-
+  }
   }
 
 

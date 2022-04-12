@@ -9,7 +9,7 @@ import { Api } from '../config';
 })
 export class LoginService {
   private api:String = Api.url;
- 
+ private ggpoin:String = 'http://186.115.218.51:85/api.ggpoints/';
   constructor(
     private conexlogin:HttpClient
   ) { }
@@ -23,6 +23,16 @@ consultarusr(id:any){
   return this.conexlogin.get(`${this.api}?consultarcustomers=${id}`)
 }
 
+
+consultartokenggpoint(){
+ return this.conexlogin.get(this.ggpoin+'?u53r=4dm1n&p455=4dm1n1nv3rc0m35')
+}
+
+consultarggpoint(token:any,id:any){
+return this.conexlogin.get(this.ggpoin+'?ced='+id+'&token='+token)
+
+
+}
 
 
 
