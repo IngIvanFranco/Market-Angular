@@ -20,7 +20,7 @@
    Error en los datos, verifica tu correo y/o contrasena
   </div>
   <div class="alert alert-success" role="alert" *ngIf="sessionini==true">
-    Ya tienes una sesion iniciada {{customer[0].name}} </div>
+    Ya tienes una sesion iniciada {{clienteme}} </div>
   <div class="contbtn">
   <button type="submit" class="btn btn-success" *ngIf="sessionini==false">Ingresar</button>
 
@@ -43,12 +43,13 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">Datos de usuario</h5>
-        <p class="card-text">Nombre: {{customer[0].name}}.</p>
-        <p class="card-text">Correo: {{customer[0].email}}.</p>
-        <p class="card-text">Telefono: {{customer[0].phone}}.</p>
-        <p class="card-text">Documento: {{customer[0].identificacion_cliente | number}}.</p>
-        <p class="card-text">Direccion: {{customer[0].city}}, {{customer[0].address}}</p>
-
+        <div *ngFor="let cliente of customer">
+        <p class="card-text">Nombre: {{cliente.name}}.</p>
+        <p class="card-text">Correo: {{cliente.email}}.</p>
+        <p class="card-text">Telefono: {{cliente.phone}}.</p>
+        <p class="card-text">Documento: {{cliente.identificacion_cliente | number}}.</p>
+        <p class="card-text">Direccion: {{cliente.city}}, {{cliente.address}}</p>
+      </div>
         <div class="contbtn">
           <button type="button"  class="btn btn-success" >Editar</button>
 
