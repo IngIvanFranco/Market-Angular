@@ -18,15 +18,15 @@
     </tr>
   </thead>
   <tbody class="table-light">
-    <tr >
-      <td *ngIf="customer[0].Tipo_identificacion_id == 1">Nit</td>
-      <td *ngIf="customer[0].Tipo_identificacion_id == 2">Cedula</td>
-      <td>{{customer[0].identificacion_cliente|number}}</td>
-      <td>{{customer[0].name}}</td>
-      <td>{{customer[0].phone}}</td>
-      <td>{{customer[0].email}}</td>
-      <td>{{customer[0].address}}</td>
-      <td>{{customer[0].city}}</td>
+    <tr *ngFor="let cliente of customer">
+      <td *ngIf="cliente.Tipo_identificacion_id == 1">Nit</td>
+      <td *ngIf="cliente.Tipo_identificacion_id == 2">Cedula</td>
+      <td>{{cliente.identificacion_cliente|number}}</td>
+      <td>{{cliente.name}}</td>
+      <td>{{cliente.phone}}</td>
+      <td>{{cliente.email}}</td>
+      <td>{{cliente.address}}</td>
+      <td>{{cliente.city}}</td>
 
     </tr>
 
