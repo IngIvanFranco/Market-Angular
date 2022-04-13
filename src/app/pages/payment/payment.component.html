@@ -77,6 +77,28 @@
     </div>
   </div>
 </div>
+
+
+<div class="card mb-3" style="max-width: 600px; margin: auto;" *ngIf="order[0].metodo_pago=='5'" >
+  <div class="row g-0" >
+    <div class="col-md-4" >
+      <img src="{{path}}/img/payment-method/5.png" class="img-fluid rounded-start" alt="..." >
+
+    </div>
+    <div class="col-md-8">
+      <div class="card text-white bg-primary mb-3" style="width: 100%; height: 100%;">
+        <div class="card-header">Tu numero de orden es: #{{order[0].id}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Estas mas cerca de tus sueños</h5>
+          <p class="card-text">Acercate a tu punto Gana-Gana mas cercano y entregale al asesor tu numero de orden junto al valor a cancelar $ {{order[0].total_price | number}} Cop. y espera tu pedido que se encuentra en camino</p>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="contenbtn">
 <button type="button" routerLink="/" class="btn btn-success">Inicio</button>
 </div>

@@ -24,6 +24,8 @@ path:String = Path.url;
       
     })
 
+  localStorage.removeItem('ggpoints')
+  
   }
 
 }

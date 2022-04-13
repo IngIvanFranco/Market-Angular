@@ -10,6 +10,7 @@ import { Orden } from '../../services/orden';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { MailService } from 'src/app/services/mail.service';
 import { Loading, Confirm, Report, Notify } from 'notiflix';
+import { mail } from '../../services/mail';
 
 
 
@@ -27,6 +28,10 @@ export class CheckoutComponent implements OnInit {
   ordenid: any;
   validacionform: boolean = false
   correostatus:any
+  points:any
+  codigo:any
+ 
+  
 
   formulariodeorden: FormGroup;
   constructor(
@@ -55,8 +60,6 @@ export class CheckoutComponent implements OnInit {
       this.usrid = usr
       this.clien.consultarusr(usr).subscribe(res => {
         this.customer = res
-
-
       });
       let cartstorage = localStorage.getItem('cart')
       let carok = JSON.parse(cartstorage)
@@ -64,43 +67,96 @@ export class CheckoutComponent implements OnInit {
       this.totalvlr = this.conexcart.totalcarrito(this.cart)
       this.servicio.consultarcity().subscribe(res => {
         this.citys = res
-
-
       })
 
 
-
-
-
-
-  }
-
-
-  crearorden() {
-
-    if (this.cart.length == 0) {
-
-         Notify.failure('No tienes Productos')
-         this.rutas.navigateByUrl('viewcart')
-    } else {
-
-
-
-    if (this.formulariodeorden.valid) {
-      Loading.standard('Generando orden')
-      this.ordenconex.crearorden(this.formulariodeorden.value, this.totalvlr, this.usrid).subscribe(res => {
-        this.ordenid = res['orden'];
-        this.creardetalleorden(this.ordenid)
-        console.log(this.ordenid);
-        Loading.remove()
-      })
-    } else {
-      Notify.failure('Datos erroneos')
-      this.validacionform = true
+      
+        this.points= localStorage.getItem('ggpoints')
+      
 
     }
+
+
+
+
+
+    crearorden(){
+
+  if (this.cart.length == 0) {
+
+    Notify.failure('No tienes Productos')
+    this.rutas.navigateByUrl('viewcart')
+} else {
+
+if (this.formulariodeorden.valid) {
+
+ if(this.formulariodeorden.value.metodopago==5){
+
+  
+  
+ let  mail=
+  {
+  asunto:'Codigo de validacion',
+  email:this.customer[0].email,
+  mensaje:''
+
+    }
+
+this.ordenconex.generarcodigo(mail).subscribe(res=>{
+this.codigo = res
+})
+
+
+Confirm.prompt(
+  'Invercomes',
+  'Te hemos enviado un codigo a tu correo, escribelo a continuacion',
+  '',
+  'Confirmar',
+  'Cancelar',
+  (respuesta)=>{
+    if (respuesta == this.codigo.Codigo) {
+     Notify.success('Codigo validado')
+     Loading.standard('Generando orden')
+     this.ordenconex.crearorden(this.formulariodeorden.value, this.totalvlr, this.usrid).subscribe(res => {
+       this.ordenid = res['orden'];
+       this.creardetalleorden(this.ordenid)
+       console.log(this.ordenid);
+       Loading.remove()
+     })
+    }else{
+      Notify.warning('Codigo no coincide')
+    }
+  },
+  (respuesta)=>{
+    Notify.info('Tranquilo tus puntos siguen intactos')
   }
-  }
+)
+
+ }else{
+
+  Loading.standard('Generando orden')
+    this.ordenconex.crearorden(this.formulariodeorden.value, this.totalvlr, this.usrid).subscribe(res => {
+      this.ordenid = res['orden'];
+      this.creardetalleorden(this.ordenid)
+      console.log(this.ordenid);
+      Loading.remove()
+    })
+ 
+
+}
+} else {
+ Notify.failure('Datos erroneos')
+ this.validacionform = true
+
+}
+}
+  
+
+}
+
+
+
+
 
 
   creardetalleorden(id: any) {

@@ -37,4 +37,9 @@ detalleorden(id:any){
 return this.cliente.get(this.api+"?detalleorden="+id)
 }
 
+
+generarcodigo(mail){
+  return this.cliente.post(this.api+"?Validacion=1",mail)
+}
+
 }
