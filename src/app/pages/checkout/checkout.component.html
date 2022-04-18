@@ -85,6 +85,22 @@
 
 
   </div>
+  <div *ngIf="points != 'false'">
+  <h3>Valor de GGPOINTS a redimir</h3>
+  <div class="points" id="ggpoint" >
+    <label for="puntos" class="control-label">Maximo a Redimir ${{points|number}}</label>
+  <input type="number" (change)="validarpoints()" class="form-control" id="puntos" name="puntos" formControlName="puntos" placeholder="Valor a redimir">
+
+</div>
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="alerpoint == true">
+el valor no puede superar tus puntos
+</div>
+
+<div class="alert alert-success" role="alert" *ngIf="alerpoint == false">
+ Valor aprobado
+</div>
+
   <h3>Metodo de pago</h3>
 
   <div class="metodospago">
@@ -104,18 +120,17 @@
     <input class="form-check-input" type="radio" name="metodopago" id="inlineRadio4" value="4" formControlName="metodopago">
     <label class="form-check-label" for="inlineRadio4"><img src="../../../assets/img/payment-method/4.png" class="icon"></label>
   </div>
-  <div class="form-check form-check-inline" *ngIf="points != 'false'">
-    <input class="form-check-input" type="radio" name="metodopago" id="inlineRadio5" value="5" formControlName="metodopago">
-    <label class="form-check-label" for="inlineRadio5"><img src="../../../assets/img/payment-method/5.png" class="icon"></label>
+  
+  
   </div>
+  
 
-
-  </div>
 
   <div class="alert alert-danger" role="alert" style="text-align: center;" *ngIf="validacionform==true">
    Error , verifica tus Datos de entrega y metodo de pago.
   </div>
 
+  
 
     <button type="submit" class="btn btn-success">Pagar</button>
 
@@ -124,3 +139,6 @@
 
 
 </div>
+
+<!-- Modal -->
+

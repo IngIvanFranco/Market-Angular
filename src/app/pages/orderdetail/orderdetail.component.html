@@ -8,6 +8,7 @@
         <div class="col-md-4">
           <img src="{{path}}/img/products/product/{{orden.product_id}}.jpg" class="img-fluid rounded-start" alt="...">
           <p class="card-text price">Total: <br> ${{((orden.precio)*(orden.quantity)|number)}}Cop.</p>
+
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -15,7 +16,7 @@
             <p class="card-text">Precio: <br> ${{orden.precio|number}}Cop.</p>
             <p class="card-text" *ngIf="orden.descuento > 0">Descuento: <br> -{{orden.descuento}}%.</p>
             <p class="card-text">Cantidad: <br> {{orden.quantity}} unidades</p>
-            
+
           </div>
         </div>
       </div>

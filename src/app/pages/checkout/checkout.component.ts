@@ -11,6 +11,8 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 import { MailService } from 'src/app/services/mail.service';
 import { Loading, Confirm, Report, Notify } from 'notiflix';
 import { mail } from '../../services/mail';
+import { ProductosdescuentosService } from '../../services/productosdescuentos.service';
+
 
 
 
@@ -30,8 +32,9 @@ export class CheckoutComponent implements OnInit {
   correostatus:any
   points:any
   codigo:any
- 
-  
+  alerpoint:boolean
+
+
 
   formulariodeorden: FormGroup;
   constructor(
@@ -49,6 +52,7 @@ export class CheckoutComponent implements OnInit {
         ciudad: ['', Validators.required],
         direccion: ['', Validators.required],
         metodopago: ['', Validators.required],
+        puntos: ['0',Validators.required]
 
       }
     )
@@ -70,13 +74,27 @@ export class CheckoutComponent implements OnInit {
       })
 
 
-      
-        this.points= localStorage.getItem('ggpoints')
-      
+
+        this.points = localStorage.getItem('ggpoints')
+
+        
+
 
     }
 
 
+    validarpoints(){
+
+      if(this.formulariodeorden.value.puntos <= this.points && this.formulariodeorden.value.puntos >= 0 )  this.alerpoint=false
+      else{
+        
+        let point = <HTMLInputElement> document.getElementById('puntos')
+        point.value = this.points
+       this.alerpoint=true
+        
+      }
+      
+    }
 
 
 
@@ -90,10 +108,13 @@ export class CheckoutComponent implements OnInit {
 
 if (this.formulariodeorden.valid) {
 
- if(this.formulariodeorden.value.metodopago==5){
 
   
-  
+ if(this.formulariodeorden.value.puntos>0){
+
+
+
+
  let  mail=
   {
   asunto:'Codigo de validacion',
@@ -116,6 +137,10 @@ Confirm.prompt(
   (respuesta)=>{
     if (respuesta == this.codigo.Codigo) {
      Notify.success('Codigo validado')
+
+  
+
+
      Loading.standard('Generando orden')
      this.ordenconex.crearorden(this.formulariodeorden.value, this.totalvlr, this.usrid).subscribe(res => {
        this.ordenid = res['orden'];
@@ -141,7 +166,7 @@ Confirm.prompt(
       console.log(this.ordenid);
       Loading.remove()
     })
- 
+
 
 }
 } else {
@@ -150,7 +175,7 @@ Confirm.prompt(
 
 }
 }
-  
+
 
 }
 
@@ -211,6 +236,7 @@ let datos={
 this.mail.enviarcorreo(datos).subscribe(res => {
   this.correostatus=res
 
+console.log(res);
 
 
 
@@ -226,7 +252,6 @@ this.mail.enviarcorreo(datos).subscribe(res => {
 
 
 }
-
 
 
 }

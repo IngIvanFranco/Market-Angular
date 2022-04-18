@@ -2,19 +2,23 @@
 <h3>Historial De Compras</h3>
 <div class="contenedor">
 
- 
+
   <div *ngFor="let orden of ordenes" class="card border-success mb-3" style="max-width: 18rem;" >
     <div class="card-header bg-transparent border-success"><h5 class="card-title">Pedido # {{orden.id}}</h5></div>
     <div class="card-body text-success">
-     
+
       <p class="card-text">Tu orden se creo por un valor de: ${{orden.total_price|number}}.</p>
       <p class="card-text">En la fecha: {{orden.created}}.</p>
+      <p class="card-text" *ngIf="orden.status == 1" style="color: rgb(127, 127, 0);">Estado de la orden: Pendiente de pago.</p>
+      <p class="card-text" *ngIf="orden.status == 2" style="color: green;">Estado de la orden: Pagada.</p>
+      <p class="card-text" *ngIf="orden.status == 3" style="color: blue;">Estado de la orden: Despachada.</p>
+      <p class="card-text" *ngIf="orden.status == 4" style="color: red;">Estado de la orden: Fallida.</p>
     </div>
     <div class="card-footer bg-transparent border-success">
       <a type="button" routerLink="/order/{{orden.id}}" class="btn btn-success" style="color:white">Detalles</a>
     </div>
   </div>
-  
+
 
 </div>
 
