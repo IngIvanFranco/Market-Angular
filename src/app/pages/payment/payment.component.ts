@@ -10,22 +10,39 @@ import { Path } from '../../config';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-public order:any;
-path:String = Path.url;
+  public order: any;
+  path: String = Path.url;
+  archivoggpoints :any
   constructor(
-    private datorutas:ActivatedRoute,
-    private ordenservice:OrdenService
+    private datorutas: ActivatedRoute,
+    private ordenservice: OrdenService
   ) { }
 
   ngOnInit(): void {
     let idorder = this.datorutas.snapshot.paramMap.get('id')
-    this.ordenservice.datosorden(idorder).subscribe(res=>{
-      this.order=res;
-      
+    this.ordenservice.datosorden(idorder).subscribe(res => {
+      this.order = res;
+
+
+      if (this.order[0].puntos > 0) {
+        this.ordenservice.archivoggpoints(idorder).subscribe(res=>{
+       this.archivoggpoints=res
+
+       this.ordenservice.contestacionggpoints(this.archivoggpoints)
+
+        })
+      }
+
+
     })
 
-  localStorage.removeItem('ggpoints')
-  
+
+
+
+    localStorage.removeItem('ggpoints')
+
+
+
   }
 
 }

@@ -1,144 +1,190 @@
 <div class="container">
   <div class="contenbtn">
-  <button type="button" routerLink="/" class="btn btn-primary">Continuar Comprando</button>
-  <button type="button" class="btn btn-danger">Cancelar</button>
-</div>
-<h2>Datos de facturación</h2>
-<table class="table">
-  <thead class="table-primary">
-    <tr>
-      <th scope="col">Tipo Identificacion</th>
-      <th scope="col">Identificacion</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Telefono</th>
-      <th scope="col">Email</th>
-      <th scope="col">Direccion</th>
-      <th scope="col">Ciudad</th>
-
-    </tr>
-  </thead>
-  <tbody class="table-light">
-    <tr *ngFor="let cliente of customer">
-      <td *ngIf="cliente.Tipo_identificacion_id == 1">Nit</td>
-      <td *ngIf="cliente.Tipo_identificacion_id == 2">Cedula</td>
-      <td>{{cliente.identificacion_cliente|number}}</td>
-      <td>{{cliente.name}}</td>
-      <td>{{cliente.phone}}</td>
-      <td>{{cliente.email}}</td>
-      <td>{{cliente.address}}</td>
-      <td>{{cliente.city}}</td>
-
-    </tr>
-
-  </tbody>
-</table>
-
-
-
-
+    <button type="button" routerLink="/" class="btn btn-primary">
+      Continuar Comprando
+    </button>
+    <button type="button" class="btn btn-danger">Cancelar</button>
+  </div>
+  <h2>Datos de facturación</h2>
+  <table class="table">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">Tipo Identificacion</th>
+        <th scope="col">Identificacion</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Email</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Ciudad</th>
+      </tr>
+    </thead>
+    <tbody class="table-light">
+      <tr *ngFor="let cliente of customer">
+        <td *ngIf="cliente.Tipo_identificacion_id == 1">Nit</td>
+        <td *ngIf="cliente.Tipo_identificacion_id == 2">Cedula</td>
+        <td>{{ cliente.identificacion_cliente | number }}</td>
+        <td>{{ cliente.name }}</td>
+        <td>{{ cliente.phone }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.address }}</td>
+        <td>{{ cliente.city }}</td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2>Lista de articulos</h2>
   <table class="table">
-  <thead class="table-primary">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Producto</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Valor Unitario</th>
-      <th scope="col">Valor Total</th>
-    </tr>
-  </thead>
-  <tbody class="table-light">
-    <tr *ngFor="let itemcart of cart let i=index">
-      <th scope="row">{{i+1}}</th>
-      <td>{{itemcart.name}}</td>
-      <td>{{itemcart.qty}}</td>
-      <td>$ {{itemcart.price | number}} Cop</td>
-      <td>$ {{(itemcart.price * itemcart.qty)|number}} Cop</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><h5>Total:</h5></td>
-      <td>$ {{totalvlr|number}} Cop</td>
-    </tr>
-  </tbody>
-</table>
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Valor Unitario</th>
+        <th scope="col">Valor Total</th>
+      </tr>
+    </thead>
+    <tbody class="table-light">
+      <tr *ngFor="let itemcart of cart; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ itemcart.name }}</td>
+        <td>{{ itemcart.qty }}</td>
+        <td>$ {{ itemcart.price | number }} Cop</td>
+        <td>$ {{ itemcart.price * itemcart.qty | number }} Cop</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><h5>Total:</h5></td>
+        <td>$ {{ totalvlr | number }} Cop</td>
+      </tr>
+    </tbody>
+  </table>
 
-<form  [formGroup]="formulariodeorden" (ngSubmit)="crearorden()">
-  <h3>Datos de entrega</h3>
+  <form [formGroup]="formulariodeorden" (ngSubmit)="crearorden()">
+    <h3>Datos de entrega</h3>
 
-  <div class="inputs">
-    <div class="form-group"> <!-- citys-->
-      <label for="state_id" class="control-label">Ciudad</label>
-      <select class="form-control" formControlName="ciudad" id="state_id" >
-        <option *ngFor="let city of citys" value="{{city.departamento}}-{{city.municipio}}">{{city.municipio}}-{{city.departamento}}</option>
+    <div class="inputs">
+      <div class="form-group">
+        <!-- citys-->
+        <label for="state_id" class="control-label">Ciudad</label>
+        <select class="form-control" formControlName="ciudad" id="state_id">
+          <option
+            *ngFor="let city of citys"
+            value="{{ city.departamento }}-{{ city.municipio }}"
+          >
+            {{ city.municipio }}-{{ city.departamento }}
+          </option>
         </select>
+      </div>
+
+      <div class="form-group">
+        <!-- Street 1 -->
+        <label for="street1_id" class="control-label">Direccion de envio</label>
+        <input
+          type="text"
+          class="form-control"
+          id="sstreet1_id"
+          name="street1"
+          formControlName="direccion"
+          placeholder="Calle, Carrera, Barrio, Manzana"
+        />
+      </div>
+    </div>
+    <div *ngIf="points > 0">
+      <h3>Valor de GGPOINTS a redimir</h3>
+      <div class="points" id="ggpoint">
+        <label for="puntos" class="control-label"
+          >GGpoints ${{ points | number }}</label
+        >
+        <input
+          type="number"
+          (change)="validarpoints()"
+          class="form-control"
+          id="puntos"
+          name="puntos"
+          formControlName="puntos"
+          placeholder="Valor a redimir"
+        />
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="alerpoint == true">
+      El valor a Redimir no puede superar tus puntos ni el total de tu compra
     </div>
 
-    <div class="form-group"> <!-- Street 1 -->
-      <label for="street1_id" class="control-label">Direccion de envio</label>
-      <input type="text" class="form-control" id="sstreet1_id" name="street1" formControlName="direccion" placeholder="Calle, Carrera, Barrio, Manzana">
+    <div class="alert alert-success" role="alert" *ngIf="alerpoint == false">
+      Valor aprobado
     </div>
 
+    <h3>Metodo de pago</h3>
 
+    <div class="metodospago">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          formControlName="metodopago"
+          name="metodopago"
+          id="inlineRadio1"
+          value="1"
+        />
+        <label class="form-check-label" for="inlineRadio1"
+          ><img src="{{path}}img/payment-method/1.png" class="icon"
+        /></label>
+      </div>
+      <div class="form-check form-check-inline" *ngIf="totalvlr >= 350000">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="metodopago"
+          formControlName="metodopago"
+          id="inlineRadio2"
+          value="2"
+        />
+        <label class="form-check-label" for="inlineRadio2"
+          ><img src="{{path}}img/payment-method/2.png" class="icon"
+        /></label>
+      </div>
+      <div class="form-check form-check-inline" *ngIf="totalvlr >= 150000">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="metodopago"
+          id="inlineRadio3"
+          value="3"
+          formControlName="metodopago"
+        />
+        <label class="form-check-label" for="inlineRadio3"
+          ><img src="{{path}}img/payment-method/3.png" class="icon"
+        /></label>
+      </div>
+      <div class="form-check form-check-inline" *ngIf="totalvlr >= 200000">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="metodopago"
+          id="inlineRadio4"
+          value="4"
+          formControlName="metodopago"
+        />
+        <label class="form-check-label" for="inlineRadio4"
+          ><img src="{{path}}img/payment-method/4.png" class="icon"
+        /></label>
+      </div>
+    </div>
 
-  </div>
-  <div *ngIf="points != 'false'">
-  <h3>Valor de GGPOINTS a redimir</h3>
-  <div class="points" id="ggpoint" >
-    <label for="puntos" class="control-label">Maximo a Redimir ${{points|number}}</label>
-  <input type="number" (change)="validarpoints()" class="form-control" id="puntos" name="puntos" formControlName="puntos" placeholder="Valor a redimir">
+    <div
+      class="alert alert-danger"
+      role="alert"
+      style="text-align: center"
+      *ngIf="validacionform == true"
+    >
+      Error , verifica tus Datos de entrega y metodo de pago.
+    </div>
 
-</div>
-</div>
-<div class="alert alert-danger" role="alert" *ngIf="alerpoint == true">
-el valor no puede superar tus puntos
-</div>
-
-<div class="alert alert-success" role="alert" *ngIf="alerpoint == false">
- Valor aprobado
-</div>
-
-  <h3>Metodo de pago</h3>
-
-  <div class="metodospago">
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" formControlName="metodopago" name="metodopago" id="inlineRadio1" value="1">
-    <label class="form-check-label" for="inlineRadio1"><img src="../../../assets/img/payment-method/1.png" class="icon"></label>
-  </div>
-  <div class="form-check form-check-inline" *ngIf="totalvlr >= 350000">
-    <input class="form-check-input" type="radio" name="metodopago" formControlName="metodopago" id="inlineRadio2" value="2">
-    <label class="form-check-label" for="inlineRadio2"><img src="../../../assets/img/payment-method/2.png" class="icon"></label>
-  </div>
-  <div class="form-check form-check-inline" *ngIf="totalvlr >= 150000">
-    <input class="form-check-input" type="radio" name="metodopago" id="inlineRadio3" value="3" formControlName="metodopago">
-    <label class="form-check-label" for="inlineRadio3"><img src="../../../assets/img/payment-method/3.png" class="icon"></label>
-  </div>
-  <div class="form-check form-check-inline" *ngIf="totalvlr >= 200000">
-    <input class="form-check-input" type="radio" name="metodopago" id="inlineRadio4" value="4" formControlName="metodopago">
-    <label class="form-check-label" for="inlineRadio4"><img src="../../../assets/img/payment-method/4.png" class="icon"></label>
-  </div>
-  
-  
-  </div>
-  
-
-
-  <div class="alert alert-danger" role="alert" style="text-align: center;" *ngIf="validacionform==true">
-   Error , verifica tus Datos de entrega y metodo de pago.
-  </div>
-
-  
-
-    <button type="submit" class="btn btn-success">Pagar</button>
-
-
+    <button type="submit" class="btn btn-success" *ngIf="pago == true">
+      Pagar
+    </button>
   </form>
-
-
 </div>
-
-<!-- Modal -->
 
