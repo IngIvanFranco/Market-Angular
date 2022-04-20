@@ -36,9 +36,9 @@
 
       <img src="{{path}}/img/icons/User_with_smile.svg.png" class="img-fluid rounded-start" alt="...">
       <div class="contbtn">
-       
-        
-  
+
+
+
       <button type="button" (click)="cerrarsesion()" class="btn btn-danger" >Cerrar sesion</button>
 
     </div>
@@ -54,7 +54,7 @@
         <p class="card-text">Direccion: {{cliente.city}}, {{cliente.address}}</p>
       </div>
         <div class="contbtn">
-          <button type="button"  class="btn btn-success" >Editar</button>
+          <button type="button" routerLink="/editprofile" class="btn btn-success" >Editar</button>
 
           <a routerLink="/profile" type="button" class="btn btn-info">Historial</a>
 

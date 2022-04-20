@@ -37,6 +37,7 @@ import { TratamientodatosComponent } from './pages/tratamientodatos/tratamientod
 import { PqrsComponent } from './pages/pqrs/pqrs.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component';
+import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component'
     TratamientodatosComponent,
     PqrsComponent,
     ProfileComponent,
-    OrderdetailComponent
+    OrderdetailComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,

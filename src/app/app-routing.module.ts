@@ -22,6 +22,7 @@ import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component'
 import { CheckoutGuard } from './guards/checkout.guard';
 import { CartGuard } from './guards/cart.guard';
 import { CheckGuard } from './guards/check.guard';
+import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 
 const routes: Routes = [
 
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'pqrs', component: PqrsComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [CheckoutGuard] },
   { path: 'order/:id', component: OrderdetailComponent, canActivate: [CheckoutGuard] },
+  { path: 'editprofile', component: EditprofileComponent, canActivate: [CheckoutGuard] },
   { path: '**', pathMatch: 'full', component: Error404Component }
 
 

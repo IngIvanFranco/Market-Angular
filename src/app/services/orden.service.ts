@@ -51,5 +51,9 @@ export class OrdenService {
     return this.cliente.post(`http://186.115.218.51:85/api.ggpoints/?registro=1`, datos)
   }
 
+  revertirproceso(id:any){
+    return this.cliente.get(this.api+"?revertirorden="+id)
+  }
+
 
 }

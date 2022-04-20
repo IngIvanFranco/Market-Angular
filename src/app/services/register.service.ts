@@ -23,5 +23,11 @@ consultarcity(){
   return this.cliente.get(this.api+"?consultarcitys=1")
 }
 
+editarcustomer(id:any,customer:Register){
+
+return this.cliente.post(this.api+"?editcustomer="+id,customer)
+
+}
+
 
 }
