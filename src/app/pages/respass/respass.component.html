@@ -1,0 +1,28 @@
+<div class="container">
+  <h3>Recuperar Pass</h3>
+  <form [formGroup]="formulariores" (ngSubmit)="verificar()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Identificacion</label>
+      <input type="email" class="form-control" formControlName="identificacion" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Telefono</label>
+      <input type="number" class="form-control" formControlName="telefono" id="exampleInputPassword1">
+
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="alerta">
+     Error al enviar el correo
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="alerta2">
+      verifica la informacion ingresada
+     </div>
+<div class="btncon">
+    <button type="submit" class="btn btn-info">Recuperar</button>
+    <button type="button" routerLink="/login" class="btn btn-warning">Cancelar</button>
+  </div>
+  </form>
+
+</div>

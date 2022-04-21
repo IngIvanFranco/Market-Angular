@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { login } from './login';
+import { Res } from './respass'
 import { Api } from '../config';
 
 @Injectable({
@@ -40,6 +41,13 @@ asignarpoint(points:any){
 localStorage.setItem('ggpoints', points)
 this.ponits = points;
 return this.ponits
+
+}
+
+recuperarpass(form:Res){
+
+return this.conexlogin.post(this.api+"?respass=1",form)
+
 
 }
 

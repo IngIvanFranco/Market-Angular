@@ -38,6 +38,7 @@ import { PqrsComponent } from './pages/pqrs/pqrs.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
+import { RespassComponent } from './pages/respass/respass.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { EditprofileComponent } from './pages/editprofile/editprofile.component'
     PqrsComponent,
     ProfileComponent,
     OrderdetailComponent,
-    EditprofileComponent
+    EditprofileComponent,
+    RespassComponent
   ],
   imports: [
     BrowserModule,

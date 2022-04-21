@@ -23,6 +23,8 @@ import { CheckoutGuard } from './guards/checkout.guard';
 import { CartGuard } from './guards/cart.guard';
 import { CheckGuard } from './guards/check.guard';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
+import { RespassComponent } from './pages/respass/respass.component';
+import { UnloginGuard } from './guards/unlogin.guard';
 
 const routes: Routes = [
 
@@ -33,7 +35,7 @@ const routes: Routes = [
   { path: 'viewcart', component: ViewcartComponent, canActivate: [CartGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'my-account', component: MyAccountComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent ,canActivate: [UnloginGuard]},
   { path: 'checkout', component: CheckoutComponent, canActivate: [CheckoutGuard, CheckGuard] },
   { path: 'payment/:id', component: PaymentComponent },
   { path: 'about', component: AboutComponent },
@@ -44,6 +46,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [CheckoutGuard] },
   { path: 'order/:id', component: OrderdetailComponent, canActivate: [CheckoutGuard] },
   { path: 'editprofile', component: EditprofileComponent, canActivate: [CheckoutGuard] },
+  { path: 'respass', component: RespassComponent,canActivate: [UnloginGuard] },
   { path: '**', pathMatch: 'full', component: Error404Component }
 
 

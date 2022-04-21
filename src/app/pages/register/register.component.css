@@ -8,8 +8,9 @@ form{
 }
 
 .btnc{
-display: flex;
-justify-content: space-between;
+
+border:1px solid #ccc;
+padding: 20px;
 }
 
 .btn{
@@ -21,4 +22,16 @@ h2{
   text-align: center;
   text-transform: capitalize;
 
+}
+
+button[type=submit]{
+  display: none;
+
+}
+
+
+
+
+#check:checked ~ button[type=submit]{
+  display: block;
 }

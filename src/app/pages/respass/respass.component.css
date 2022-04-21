@@ -1,0 +1,26 @@
+form{
+  width: 90%;
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+
+}
+
+h3{
+  text-align: center;
+  margin: 25px auto;
+}
+
+.btn{
+  font-size: 14px;
+  
+}
+
+
+.btncon{
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+margin: 25px auto;
+}
