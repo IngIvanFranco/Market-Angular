@@ -110,15 +110,16 @@ export class LoginComponent implements OnInit {
 
       this.servicio.consultarggpoint(this.token.token, id).subscribe(res => {
 this.respuesta = res
+console.log(this.respuesta);
 
         if (!res)  {
-          this.servicio.asignarpoint(false) 
-          
+          this.servicio.asignarpoint(false)
+
         }
 
         else {
-        
-         let puntos = this.respuesta.PUNTOS
+
+         let puntos = this.respuesta.EQUIVALENCIA
          this.servicio.asignarpoint(puntos)
          Report.success(
           'Eres un cliente Gana-Gana',
