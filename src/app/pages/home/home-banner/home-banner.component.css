@@ -4,6 +4,8 @@
     border-radius: 0 0 20px 20px;
 	margin-bottom:  20px;
 	overflow: hidden;
+ 
+  position: relative;
   
   
   
@@ -42,3 +44,28 @@
 	100% {margin-left: -300%;}
 }
 
+.ps-banner__content{
+
+  position: absolute;
+  top:10%;
+  left: 10%;
+  padding:10px;
+}
+
+@media (max-width: 650px) {
+  
+.ps-banner__content{
+width: 90%;
+left: 0;
+margin: auto;
+ position: relative;
+ 
+ text-align: center;
+ padding: 0;
+}
+
+.slider-frame{
+  
+ height: 400px;
+}
+}

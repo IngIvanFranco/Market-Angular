@@ -14,3 +14,12 @@
 .categ{
 text-transform: capitalize;
 }
+
+.con{
+
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+
+

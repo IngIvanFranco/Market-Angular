@@ -65,3 +65,13 @@ form{
   padding: 20px;
 
 }
+
+
+.form-check{
+  padding: 5px;
+  margin: 10px auto;
+}
+
+@media (max-width: 650px) {
+  
+  }

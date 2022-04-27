@@ -25,3 +25,14 @@
   width: 50%;
   margin: auto;
 }
+
+
+
+@media (max-width: 650px) {
+  .cardc{
+    padding: 10px;
+    width: 100%;
+
+  }
+ 
+  }

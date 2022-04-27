@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
 
 	constructor(
-    private categoriesService: CategoriesService,
+    public categoriesService: CategoriesService,
     private rutas:Router,
     public cartconex:CartService
     ) {  }
@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
     let carok = JSON.parse(cartstorage)
     this.cartconex.asignarcarrito(carok)
     this.cart = this.cartconex.carrito
+
 		this.categoriesService.getData()
 		.subscribe(resp => {
 

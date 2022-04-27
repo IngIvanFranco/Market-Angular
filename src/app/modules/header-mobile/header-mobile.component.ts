@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { Path } from '../../config';
 
-declare var jQuery:any;
-declare var $:any;
+
 
 import { CategoriesService } from '../../services/categories.service';
-import { SubCategoriesService } from '../../services/sub-categories.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-header-mobile',
@@ -15,13 +17,26 @@ import { SubCategoriesService } from '../../services/sub-categories.service';
 
 export class HeaderMobileComponent implements OnInit {
 
-	path:String = Path.url;	
+	path:String = Path.url;
 	categories:Object = null;
 	render:Boolean = true;
 	categoriesList:Array<any> = [];
+  cart:any[]=[];
+  totalcart:any;
+fomrmularioconsulta:FormGroup;
 
-	constructor(private categoriesService: CategoriesService, 
-    private subCategoriesService: SubCategoriesService) { }
+	constructor(
+    private categoriesService: CategoriesService,
+    private fomulario: FormBuilder,
+    private rutas:Router,
+    public cartconex:CartService) { 
+
+      this.fomrmularioconsulta= this.fomulario.group(
+        {
+          q:['',Validators.required]
+        }
+      )
+    }
 
 	ngOnInit(): void {
 
@@ -31,29 +46,63 @@ export class HeaderMobileComponent implements OnInit {
 
 		this.categoriesService.getData()
 		.subscribe(resp => {
-			
+
 			this.categories = resp;
 
 		})
 
-		/*=============================================
-		Activamos el efecto toggle en el listado de subcategorías
-		=============================================*/
+
+    if (localStorage.getItem("cart") === null) {
+
+      localStorage.setItem("cart","")
+
+    }else{
+
+
+    let cartstorage = localStorage.getItem('cart')
+    let carok = JSON.parse(cartstorage)
+    this.cartconex.asignarcarrito(carok)
+    this.cart = this.cartconex.carrito
+
+
+
+    }
+
+
 
 
 	}
 
+          recibirconsulta(){
+        
+        
+            
+            this.rutas.navigateByUrl(`search/${this.fomrmularioconsulta.value.q}`)
+            this.totalcart = this.cartconex.totalcarrito(this.cart);
+            
+            }
+            
+            
+            
+            
+            
+            elimaritem(id:any){
+            
+              this.cart=this.cartconex.eliminarcartitem(id)
+              this.totalcart = this.cartconex.totalcarrito(this.cart);
+            
+            }
+            
+            
+            volver(){
+              this.rutas.navigateByUrl('')
+            
+            
+            }
+            
 
-					/*=============================================
-					Recorremos el array de objetos nuevo para buscar coincidencias con los nombres de categorías
-					=============================================*/
-
-
-
-			
 
 			}
-			
-		
 
-    
+
+
