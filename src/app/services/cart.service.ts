@@ -92,4 +92,12 @@ cambiarcantidad(cantidad:any,id:any){
 
     }
 
+
+    cambiartalla(id:any,talla:string){
+      localStorage.removeItem('cart')
+      this.carrito[id].talla=talla
+      localStorage.setItem('cart',JSON.stringify(this.carrito))
+      return this.carrito
+    }
+
 }

@@ -6,10 +6,32 @@
               <div class="row g-0">
                 <div class="col-md-4">
                   <img src="{{path}}/img/products/product/{{item.id}}.jpg" class="img-fluid rounded-start" alt="...">
+                  <h5 class="card-title" *ngIf="item.tipo != 0">Tallas</h5>
+                  <div class="conttallas" *ngIf="item.tipo == 1">
+                    <input type="radio" name="talla" id="xs"  (change)="cambiartalla(i,'xs')"><label for="xs">xs</label>
+                    <input type="radio" name="talla" id="s"  (change)="cambiartalla(i,'s')" ><label for="s">s</label>
+                    <input type="radio" name="talla" id="m"  (change)="cambiartalla(i,'m')" ><label for="m">m</label>
+                    <input type="radio" name="talla" id="l"  (change)="cambiartalla(i,'l')" ><label for="l">l</label>
+                    <input type="radio" name="talla" id="xl"  (change)="cambiartalla(i,'xl')" ><label for="xl">xl</label>
+                  </div>
+                  <div class="conttallas" *ngIf="item.tipo == 2">
+                    <input type="radio" name="talla" id="8"  (change)="cambiartalla(i,'8')"><label for="28">8</label>
+                    <input type="radio" name="talla" id="10"  (change)="cambiartalla(i,'10')" ><label for="10">10</label>
+                    <input type="radio" name="talla" id="12"  (change)="cambiartalla(i,'12')" ><label for="12">12</label>
+                    <input type="radio" name="talla" id="14"  (change)="cambiartalla(i,'14')" ><label for="14">14</label>
+                  </div>
+                  <div class="conttallas" *ngIf="item.tipo == 3">
+                    <input type="radio" name="talla" id="28"  (change)="cambiartalla(i,'28')"><label for="28">28</label>
+                    <input type="radio" name="talla" id="30"  (change)="cambiartalla(i,'30')" ><label for="30">30</label>
+                    <input type="radio" name="talla" id="32"  (change)="cambiartalla(i,'32')" ><label for="32">32</label>
+                    <input type="radio" name="talla" id="34"  (change)="cambiartalla(i,'34')" ><label for="34">34</label>
+                    <input type="radio" name="talla" id="36"  (change)="cambiartalla(i,'36')" ><label for="36">36</label>
+                  </div>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">{{item.name}}</h5>
+                    <h6 class="card-title" *ngIf="item.tipo != 0"> Talla: {{item.talla}}</h6>
                     <p class="card-text">$ {{(item.qty * item.price) | number}}</p>
 
                       <label for="validationDefault01" class="form-label">Cantidad</label>

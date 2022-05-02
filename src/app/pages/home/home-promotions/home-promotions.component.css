@@ -1,5 +1,4 @@
-.cont{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.ps-collection{
+  border: 1px solid #ccc;
+  margin: 20px 5px;
 }

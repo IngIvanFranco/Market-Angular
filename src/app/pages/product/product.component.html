@@ -7,14 +7,25 @@
       <h5 class="card-title">Descripcion:</h5>
       <p class="card-text">{{ produc.description }}</p>
 
-      <h5 class="card-title">Precio:</h5>
-      <p class="card-text">$ {{ produc.price | number }} Cop</p>
+      <div
+        class="compra"
+        *ngIf="produc.id_opc_subcate != 154 && produc.id_categoriaproducts != 7"
+      >
+        <h5 class="card-title">Precio:</h5>
+        <p class="card-text">$ {{ produc.price | number }} Cop</p>
+      </div>
+
+      <div
+        class="cotiza"
+        *ngIf="produc.id_opc_subcate == 154 || produc.id_categoriaproducts == 7"
+      >
+        <h5 class="card-title">Producto disponible solo por cotizacion</h5>
+      </div>
 
       <div class="descuento" *ngIf="produc.descuento > 0">
         <h5 class="card-title">Descuento:</h5>
         <p class="card-text">-{{ produc.descuento }}% Off</p>
       </div>
-
       <h5 class="card-title">Medios de pago:</h5>
 
       <p class="card-text">
@@ -36,25 +47,35 @@
       <h5 class="card-title">Duracion de la entrega:</h5>
       <p class="card-text">1 a 3 dias habiles</p>
     </div>
-    </div>
-   <div class="card" *ngFor="let produc of producto">
+  </div>
+  <div class="card" *ngFor="let produc of producto">
     <img
       src="{{ path }}img/products/product/{{ produc.id }}.jpg"
       class="imgp"
       alt="..."
     />
     <a
+      *ngIf="produc.id_opc_subcate != 154 && produc.id_categoriaproducts != 7"
       (click)="
         addcart(
           produc.id,
           produc.name,
           produc.price,
           produc.descuento,
-          produc.talla
+          produc.ropa_tipo
         )
       "
       class="btn btn-primary"
       >Add Cart</a
+    >
+
+    <a
+      *ngIf="produc.id_opc_subcate == 154 || produc.id_categoriaproducts == 7"
+      class="btn btn-success"
+      href="mailto:direccionoperativa@invercomes.com.co?subject=cotizacion%20producto%20{{
+        produc.name
+      }}&message={{ produc.name }}"
+      >Cotizar</a
     >
   </div>
 </div>

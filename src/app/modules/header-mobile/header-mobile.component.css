@@ -1,15 +1,20 @@
 
 .header__top{
-  background: #2b6109;
-  color: rgb(207, 207, 207);
+  background: #131921;
+
+  color: rgb(151, 151, 151);
 }
 
 
 .navigation--mobile, .ps-search--mobile{
-  background: #3a850b;
-  color: rgb(207, 207, 207);
+  background: #232F3E;
+  /*color: rgb(207, 207, 207);*/
+  color: rgb(198, 198, 198);
 }
+.lg{
+  margin-top: -13%;
 
+}
 
 .categ{
 text-transform: capitalize;

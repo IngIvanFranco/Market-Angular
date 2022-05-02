@@ -1,21 +1,25 @@
-header{
 
-}
 
 .header__top{
-  background: #2b6109;
-  color: rgb(207, 207, 207);
+  background: #131921;
+
+  color: rgb(151, 151, 151);
 }
 
 
 .header__content{
-  background: #3a850b;
-  color: rgb(207, 207, 207);
+  background: #232F3E;
+  /*color: rgb(207, 207, 207);*/
+  color: rgb(198, 198, 198);
+}
+
+.nt{
+  color:rgb(151, 151, 151) ;
 }
 
 
 button{
-  background: #eb7d46;
+  background: #232F3E;
 }
 
 
@@ -24,9 +28,9 @@ text-transform: capitalize;
 }
 
 .btn{
-  
+
   font-size: 18px;
-  
+
 }
 
 .btns{
@@ -35,7 +39,11 @@ text-transform: capitalize;
 }
 
 .con{
-  
+
   max-height: 400px;
   overflow-y: auto;
+}
+
+.lg{
+  margin-top: -15px;
 }

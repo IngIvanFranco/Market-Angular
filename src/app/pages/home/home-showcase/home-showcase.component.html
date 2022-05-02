@@ -11,7 +11,7 @@
         <p class="card-text desc">-{{producto.descuento}}% off</p>
         <p class="card-text">$ {{producto.price | number | lowercase}}</p>
 
-        <button class="btn btn-primary" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.id_opc_subcate)">Add Cart</button>
+        <button class="btn btn-primary" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo)">Add Cart</button>
       </div>
     </div>
 </div>

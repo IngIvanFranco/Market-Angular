@@ -82,4 +82,11 @@ cargue(){
   Loading.remove()
 }
 
+
+
+cambiartalla(id:any,talla:string){
+
+this.cart= this.conexcart.cambiartalla(id,talla)
+}
+
 }
