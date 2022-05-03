@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Api } from '../config';
+import { ApiMail } from '../config';
 
 
 
@@ -12,7 +12,7 @@ import { Observable, observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MailService {
-  private api:String = Api.url;
+  private api:String = ApiMail.url;
 
   constructor(
     private conexionmail:HttpClient

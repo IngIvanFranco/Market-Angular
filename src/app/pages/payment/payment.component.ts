@@ -24,6 +24,7 @@ export class PaymentComponent implements OnInit {
     let idorder = this.datorutas.snapshot.paramMap.get('id')
     this.ordenservice.datosorden(idorder).subscribe(res => {
       this.order = res;
+          console.log(res);
 
 
       if (this.order[0].puntos > 0 && this.order[0].status == 1) {

@@ -154,11 +154,12 @@ export class CheckoutComponent implements OnInit {
                 this.ordenconex.crearorden(this.formulariodeorden.value, this.totalvlr, this.usrid).subscribe(res => {
                   this.ordenid = res['orden'];
                   this.creardetalleorden(this.ordenid)
-                  console.log(this.ordenid);
-                  Loading.remove()
+                   Loading.remove()
                   if (this.formulariodeorden.value.metodopago == 2 || this.formulariodeorden.value.metodopago == 3) {
                     this.informarcredito(this.metodopago)
                   }
+
+            this.informarcontabilidad()
                 })
               } else {
                 Notify.warning('Codigo no coincide')
@@ -174,12 +175,16 @@ export class CheckoutComponent implements OnInit {
           Loading.standard('Generando orden')
           this.ordenconex.crearorden(this.formulariodeorden.value, this.totalvlr, this.usrid).subscribe(res => {
             this.ordenid = res['orden'];
+
+
             this.creardetalleorden(this.ordenid)
-            console.log(this.ordenid);
+
             Loading.remove()
             if (this.formulariodeorden.value.metodopago == 2 || this.formulariodeorden.value.metodopago == 3) {
               this.informarcredito(this.metodopago)
             }
+
+            this.informarcontabilidad()
           })
 
 
@@ -192,6 +197,49 @@ export class CheckoutComponent implements OnInit {
 
       }
     }
+
+
+  }
+
+
+
+  informarcontabilidad() {
+
+
+    let datos = {
+      email: 'contabilidad@invercomes.com.co',
+      asunto: `Orden de compra ${this.ordenid}`,
+      mensaje: `
+
+          <div style="background:#ccc; width:80%; margin:auto; padding:30px; border-radius:10px;  ">
+          <img src="https://invercomes.com.co/img/Logo-Invercomes-Horizontal.png" style="width:100%">
+          <h2 style="">Orden de compra #${this.ordenid}</h2>
+          <p>Se ha generado una orden de compra por valor de $ ${this.totalvlr - this.pointsform}</p>
+          <p>Nombre: ${this.customer[0].name} <br>
+          Identificacion: ${this.customer[0].identificacion_cliente} <br>
+            Telefono: ${this.customer[0].phone} <br>
+            Direccion: ${this.customer[0].address + ' ' + this.customer[0].city}</p>
+          <p>Cordialmente,</p>
+          <p>Equipo MarketPlace <br> Invercomes Sas. informacion</p>
+
+          </div>
+
+
+  `
+    }
+
+    this.mail.enviarcorreo(datos).subscribe(res => {
+      this.correostatus = res
+
+      if (this.correostatus.success == 1) {
+        Notify.success('Se ha informado al area contable de tu pedido')
+      } else {
+        Notify.failure('Algo fallo, El correo no se envio')
+      }
+
+
+    })
+
 
 
   }

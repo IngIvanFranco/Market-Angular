@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Orden } from './orden';
 import { HttpClient } from '@angular/common/http';
-import { Api } from '../config';
+import { Api, ApiMail } from '../config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdenService {
   private api: String = Api.url;
+  private apiMail: String = ApiMail.url;
 
   constructor(
     private cliente: HttpClient
@@ -16,7 +17,6 @@ export class OrdenService {
   crearorden(entrega: Orden, vlr: any, usr: any) {
 
     return this.cliente.post(this.api + "?usr=" + usr + "&valor=" + vlr, entrega)
-
 
 
   }
@@ -39,7 +39,7 @@ export class OrdenService {
 
 
   generarcodigo(mail) {
-    return this.cliente.post(this.api + "?Validacion=1", mail)
+    return this.cliente.post(this.apiMail + "?Validacion=1", mail)
   }
 
 
