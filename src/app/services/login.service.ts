@@ -38,7 +38,7 @@ return this.conexlogin.get(this.ggpoin+'?ced='+id+'&token='+token)
 
 
 asignarpoint(points:any){
-localStorage.setItem('ggpoints', points)
+localStorage.setItem('ggpoints',btoa(points))
 this.ponits = points;
 return this.ponits
 

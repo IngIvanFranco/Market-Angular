@@ -22,13 +22,14 @@ export class EditprofileComponent implements OnInit {
    private servicio:LoginService,
    public formulario:FormBuilder,
    private servicio2:RegisterService,
-   private rutas:Router) {  this.idusr = sessionStorage.getItem('usr')
+   private rutas:Router) {
+      this.idusr = atob(sessionStorage.getItem('usr'))// decodifica el usr
 
 
-   this.servicio.consultarusr(this.idusr).subscribe(res=>{
+   this.servicio.consultarusr(this.idusr).subscribe(res=>{ // consulta los datos del usr y los trae a traves del servicio
    this.customer= res
-      console.log(this.customer);
-      this.formularioedicion.setValue(
+
+      this.formularioedicion.setValue( // asigna valores a los input de el formulario
         {
 
           identificacion: this.customer[0].identificacion_cliente,
@@ -46,7 +47,7 @@ export class EditprofileComponent implements OnInit {
 
 
 
-   this.formularioedicion = this.formulario.group({
+   this.formularioedicion = this.formulario.group({ //crea el grupo del formulario y genera validaciones
 
      identificacion: ['', Validators.required],
      nombre: ['', Validators.required],
@@ -59,7 +60,7 @@ export class EditprofileComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.servicio2.consultarcity().subscribe(res => {
+    this.servicio2.consultarcity().subscribe(res => { // trae las ciudades para el select del formulario
       this.citys = res
 
     })
@@ -68,13 +69,13 @@ export class EditprofileComponent implements OnInit {
   }
 
 
-  editar(){
+  editar(){ // funcion para procesar los datos del formulario
 
-    if (this.formularioedicion.valid) {
+    if (this.formularioedicion.valid) { // valida que los input esten diligenciados
       Loading.standard('Editando Usuario')
-      this.servicio2.editarcustomer(this.idusr,this.formularioedicion.value).subscribe(res=>{
+      this.servicio2.editarcustomer(this.idusr,this.formularioedicion.value).subscribe(res=>{// envia el formulario al servicio para luego enviar la informacion a la api
 let resultado = res
-        if (resultado['success'] == 1 ) {
+        if (resultado['success'] == 1 ) {// respuesta acertada quiere decir que la informacion se actualizo correctamente
           Loading.remove()
           Notify.success('Tu perfil se ha editado correctamente')
           Report.success(
@@ -82,8 +83,8 @@ let resultado = res
             'Recuerda que si cambiaste tu email, tambian cambiaste de usuario asi que la proxima vez que inicies sesion deberas de hacerlo con este nuevo email',
             'Yeah'
           )
-          this.rutas.navigateByUrl('login')
-        }else{
+          this.rutas.navigateByUrl('login')// nos redirije al login
+        }else{ // de lo contrario infroma que algo sucedio
           Loading.remove()
           Notify.failure('algo sucedio')
           Report.failure(
@@ -95,7 +96,7 @@ let resultado = res
 
       }
       )
-    }else{
+    }else{ // si el formulario no cumple con la validacion dispara las alarmas
       Notify.failure('Revisa Tus Datos')
       this.alerta=true
     }

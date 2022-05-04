@@ -6,6 +6,7 @@
     <button type="button" class="btn btn-danger">Cancelar</button>
   </div>
   <h2>Datos de facturación</h2>
+  <div class="conttable">
   <table class="table">
     <thead class="table-primary">
       <tr>
@@ -31,8 +32,11 @@
       </tr>
     </tbody>
   </table>
+</div>
 
   <h2>Lista de articulos</h2>
+
+  <div class="conttable">
   <table class="table">
     <thead class="table-primary">
       <tr>
@@ -60,7 +64,7 @@
       </tr>
     </tbody>
   </table>
-
+</div>
   <form [formGroup]="formulariodeorden" (ngSubmit)="crearorden()">
     <h3>Datos de entrega</h3>
 

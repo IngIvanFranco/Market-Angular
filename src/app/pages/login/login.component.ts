@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     private servicio: LoginService
 
   ) {
-    this.grupoformlogin = this.FormBuilder.group({
+    this.grupoformlogin = this.FormBuilder.group({ // asigna el grupo al fomrulario
       usr: [''],
       pass: ['']
     });
@@ -39,17 +39,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('usr') === null) {
+    if (sessionStorage.getItem('usr') === null) {// valida si hay una sesion inciada
       this.sessionini = false
     } else {
       this.sessionini = true
-      this.idus = sessionStorage.getItem('usr');
-      this.servicio.consultarusr(this.idus).subscribe(res => {
+      this.idus = atob(sessionStorage.getItem('usr'));// si la sesion esta iniciada decodifica el usr y lo asigna a la variable
+
+
+      this.servicio.consultarusr(this.idus).subscribe(res => {// trae toda la informacion del cliente
         this.customer = res
-
-
-
-
 
       });
 
@@ -61,22 +59,23 @@ export class LoginComponent implements OnInit {
   }
 
 
-  logear(): any {
+  logear(): any {// funcion para capturar los datos y enviarlos al servicio
 
-    this.servicio.login(this.grupoformlogin.value).subscribe(res => {
+    this.servicio.login(this.grupoformlogin.value).subscribe(res => {// evnia los datos al servicio
       this.customer = res
       let variable = JSON.stringify(this.customer)
 
-      if (this.customer['success'] == 0) {
+      if (this.customer['success'] == 0) {// si la respuesta es erronea dispara las alertas
         this.alerta = true
         Notify.warning('Error en los datos')
-      } else {
+      } else {// la respuesta es positiva quiere decir que q si existe el usr
         sessionStorage.removeItem('usr')
         this.alerta = false;
         this.sessionini = true
-        sessionStorage.setItem('usr', this.customer[0].id)
+        let custom = btoa(this.customer[0].id) // codifica el id del usuario
+        sessionStorage.setItem('usr', custom)
 
-        this.consultarggpoin(this.customer[0].identificacion_cliente)
+        this.consultarggpoin(this.customer[0].identificacion_cliente) // consultamos si el usr es un cliente gana gana
         Notify.info(
 
           `Bienvenido ${this.customer[0].name}`,
@@ -84,14 +83,14 @@ export class LoginComponent implements OnInit {
         )
 
 
-        this.rutas.navigateByUrl('/viewcart');
+        this.rutas.navigateByUrl('/viewcart');//nos redirije al carrito de compras
       }
     })
 
   }
 
 
-  cerrarsesion() {
+  cerrarsesion() { // borra todos los archivos relacionados con la sesion
     Loading.standard('Cerrando sesion')
     sessionStorage.removeItem('usr')
     this.sessionini = false
@@ -102,22 +101,22 @@ export class LoginComponent implements OnInit {
 
 
 
-  consultarggpoin(id: any) {
+  consultarggpoin(id: any) { //recibe el identificador del cliente y lo consulta en el ws de gana gana
 
 
-    this.servicio.consultartokenggpoint().subscribe(res => {
+    this.servicio.consultartokenggpoint().subscribe(res => {// consulta un token para poder hacer uso del ws
       this.token = res
 
-      this.servicio.consultarggpoint(this.token.token, id).subscribe(res => {
+      this.servicio.consultarggpoint(this.token.token, id).subscribe(res => {// consulta si efectivamente el usr es cliente gana gana
 this.respuesta = res
 console.log(this.respuesta);
 
-        if (!res)  {
+        if (!res)  {// si no existe asigna un flase a la variable ggpoints
           this.servicio.asignarpoint(false)
 
         }
 
-        else {
+        else { // asigna la equivalencia a la variable ggpoints haciendo uso del servicio
 
          let puntos = this.respuesta.EQUIVALENCIA
          this.servicio.asignarpoint(puntos)

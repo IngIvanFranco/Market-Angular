@@ -21,10 +21,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     Loading.standard('cargando')
-    this.customer=sessionStorage.getItem('usr');
+    this.customer=  atob(sessionStorage.getItem('usr'));
     this.servicio.listadoordenescliente(this.customer).subscribe(res=>{
       this.ordenes=res
-     console.log(this.ordenes);
+
      Loading.remove()
     })
 
