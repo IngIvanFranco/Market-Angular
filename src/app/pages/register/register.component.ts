@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     private rutas: Router
   ) {
 
-    this.fomrularioderegistro = this.formulario.group(
+    this.fomrularioderegistro = this.formulario.group(// asigna el grupo al formulario
       {
         tipoiden: ['', Validators.required],
         identificacion: ['', Validators.required],
@@ -37,26 +37,25 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.servicio.consultarcity().subscribe(res => {
+    this.servicio.consultarcity().subscribe(res => {//trae el listado de las ciudades para luego listarlas en el select
       this.citys = res
 
     })
   }
 
 
-  register() {
+  register() {//funcion para registrar el nuevo cliente
 Loading.standard('Creando Usuario')
-    if (this.fomrularioderegistro.valid) {
+    if (this.fomrularioderegistro.valid) {//valida q todos los inputs del formulario esten diligenciados
 Loading.remove()
-      this.servicio.crearcustomer(this.fomrularioderegistro.value).subscribe(
+      this.servicio.crearcustomer(this.fomrularioderegistro.value).subscribe(//envia los datos del formulario al servicio para el registro del mismo
         res => {
-
           this.rutas.navigateByUrl('/login')
           Notify.success('Usuario creado correctamente')
         }
       );
 
-    } else {
+    } else {// al no cunmplirt con la validacion dispara las alertas
       Loading.remove()
       Notify.failure('algo Salio mal, revisa tus datos')
 

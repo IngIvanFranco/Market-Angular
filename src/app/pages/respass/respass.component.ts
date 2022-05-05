@@ -22,7 +22,7 @@ export class RespassComponent implements OnInit {
    private servicio:LoginService,
    private mailservicio:MailService
   ) {
-this.formulariores = this.formulario.group(
+this.formulariores = this.formulario.group( //asigna el grupo al formulario
   {
     identificacion:['',Validators.required],
     telefono:['',Validators.required]
@@ -35,27 +35,27 @@ this.formulariores = this.formulario.group(
   }
 
 
-  verificar(){
-    if (this.formulariores.valid) {
+  verificar(){ // funcion para recuperar el pass
+    if (this.formulariores.valid) {// valida que el formulario este completamente diligenciado
       this.alerta=false
       this.alerta2=false
 
-      this.servicio.recuperarpass(this.formulariores.value).subscribe(res=>{
+      this.servicio.recuperarpass(this.formulariores.value).subscribe(res=>{//envia los datos al servicio para consultar si existen registros
         let respuesta = res
 
-        if (respuesta['success']==0) {
+        if (respuesta['success']==0) {// si devuelve el 0 quiere decir q no hay regsitros
           Report.warning(
             'Invercomes Notificacion',
             'No tenemos registros con estos datos, pero puedes registrarte con nosotros ',
             'Ok'
           )
-        }if (respuesta['success']==1) {
+        }if (respuesta['success']==1) {// cuando devuelve el uno es por q hay mas de 1 usr con esos datos y no procederemos a continuar
           Report.failure(
             'Invercomes Notificacion',
             'Tenemos mas de una cuenta registrada con estos datos, comunicate con la direccion de tics direcciontics@invercomes.com.co',
             'Ok'
           )
-        }else{
+        }else{ // de lo contrario efectivamente trae la informacion del usr crea el archivo de correo y lo envia a traves del servicio
 
 this.customer=respuesta
 
@@ -82,7 +82,7 @@ this.customer=respuesta
   `
     }
 
-this.mailservicio.enviarcorreo(datos).subscribe(res=>{
+this.mailservicio.enviarcorreo(datos).subscribe(res=>{// envia el archivo del correo para informar al cliente sus datos personales entre esos el pass
   let respuestamail = res
   if ( respuestamail['success'] == 1 ) {
     Report.success(
@@ -91,11 +91,11 @@ this.mailservicio.enviarcorreo(datos).subscribe(res=>{
       'Ok'
     )
 
-  }else{
+  }else{// si responde distinto el servidor dispara una alerta
     this.alerta=true
   }
 
-}, err=>{
+}, err=>{// si el servidor devuelve un error se disparan las alertas
 
   this.alerta=true
   this.alerta2=false
@@ -104,7 +104,7 @@ this.mailservicio.enviarcorreo(datos).subscribe(res=>{
 
         }
 
-      }, err=>{
+      }, err=>{// si efectivamente els ervidor devcuelve un error informamos al cliente
         Report.info(
           'Invercomes Notificacion',
           'ops creo q el servidor estallo... consulta en otra ocasion o comunicate con la direccion de tics direcciontics@invercomes.com.co',

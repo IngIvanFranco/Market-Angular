@@ -23,17 +23,17 @@ export class ViewcartComponent implements OnInit {
 
   ngOnInit(): void {
     Loading.standard('Cargando Pagina')
-    let cartstorage = localStorage.getItem('cart')
-    let carok = JSON.parse(cartstorage)
-    this.cart = this.conexcart.asignarcarrito(carok)
+    let cartstorage = localStorage.getItem('cart')// captura el carrito que esta en el localstorage  y lo asigna a una variable
+    let carok = JSON.parse(cartstorage)//convierte la variable en un archivo json
+    this.cart = this.conexcart.asignarcarrito(carok)//envia el carrito al servicio
     this.render=true
-    this.valortotal(this.cart)
+    this.valortotal(this.cart)//totaliza el valor del carrito
     this.cargue()
 
 
   }
 
-cambiar(id:any){
+cambiar(id:any){// funcion q captura el evento si hay un cambio de la cantidad del producto
 
 let can = <HTMLInputElement> document.getElementById(`cantidad${id}`);
 var cantidad = can.value
@@ -56,7 +56,7 @@ if (res == false) {
 }
 
 
-valortotal(car:any[]){
+valortotal(car:any[]){ // funcion para determinar el valor total del carrito de compras
 let total=0
   for (let i = 0; i < car.length; i++) {
     const element = car[i];
@@ -70,7 +70,7 @@ total += element.qty * element.price
 
 }
 
-eliminaritem(id:any){
+eliminaritem(id:any){// funcion que elimina un item del carrito de compras a traves del servicio
 
 this.cart = this.conexcart.eliminarcartitem(id)
 this.valortotal(this.cart)
@@ -84,7 +84,7 @@ cargue(){
 
 
 
-cambiartalla(id:any,talla:string){
+cambiartalla(id:any,talla:string){// funcion que modifica la talla del producto siempre y cuando sea un producto tipo ropa
 
 this.cart= this.conexcart.cambiartalla(id,talla)
 }

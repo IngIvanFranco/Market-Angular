@@ -21,8 +21,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     Loading.standard('cargando')
-    this.customer=  atob(sessionStorage.getItem('usr'));
-    this.servicio.listadoordenescliente(this.customer).subscribe(res=>{
+    this.customer=  atob(sessionStorage.getItem('usr'));//captura de la sesion el usr y lo decodifica
+    this.servicio.listadoordenescliente(this.customer).subscribe(res=>{// consulta por el servicio las ordenes del cliente
       this.ordenes=res
 
      Loading.remove()

@@ -24,8 +24,8 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     Loading.standard('Cargando Pagina')
-    this.id=this.datosrutas.snapshot.paramMap.get('id')
-    this.conex.verproducto(this.id).subscribe(respuesta=>{
+    this.id=this.datosrutas.snapshot.paramMap.get('id')// captura el id del producto que va por la ruta
+    this.conex.verproducto(this.id).subscribe(respuesta=>{// consulta a traves del servicio los datos de ese producto
       this.producto=respuesta;
 
       Loading.remove()
@@ -39,7 +39,7 @@ export class ProductComponent implements OnInit {
 
 
 
-  addcart(id:any,name:any,price:any,des:any,tipo:any ){
+  addcart(id:any,name:any,price:any,des:any,tipo:any ){//funcion para agregar un producto al carrito de compras
    this.cart.addcart(id,name,price,des,tipo);
    this.rutas.navigateByUrl('/viewcart')
   }

@@ -31,8 +31,8 @@ carga:boolean=false
 
   ngOnInit(): void {
     Loading.standard('Cargando Pagina')
- this.q = this.datosrutas.snapshot.paramMap.get('q')
- this.conex.productosconsulta(this.q).subscribe(arg => {
+ this.q = this.datosrutas.snapshot.paramMap.get('q')//asigna el dato que viene por la ruta a una variable
+ this.conex.productosconsulta(this.q).subscribe(arg => {// envia la variable al servicio para consultar que productos concuerdan con la consulta
    this.productos = arg
 
    Loading.remove();
@@ -45,7 +45,7 @@ carga:boolean=false
 
 
 
-  addcart(id:any,name:any,price:any,des:any,tipo:any ){
+  addcart(id:any,name:any,price:any,des:any,tipo:any ){// funcion para agregar el producto al carrito de compra
 
      this.conexcart.addcart(id,name,price,des,tipo)
 

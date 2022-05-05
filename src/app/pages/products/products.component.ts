@@ -18,25 +18,25 @@ path:String = Path.url;
     private productosservicios:ProductsService,
     private CartService:CartService,
     private rutas:Router
-  ) { 
+  ) {
     this.cargue=false
   }
 
   ngOnInit(): void {
 
-this.id=this.datosrutas.snapshot.paramMap.get('id')
+this.id=this.datosrutas.snapshot.paramMap.get('id')//captura la categoria del producto por la url
 
 console.log(this.id);
 
-this.productosservicios.listarproductocategoria(this.id).subscribe(res=>{
+this.productosservicios.listarproductocategoria(this.id).subscribe(res=>{// consulta por el servicio los productos que pertenecen a esta categoria
  this.productos=res
-   
+
 })
 
 this.cargue=true;
   }
 
-  addcart(id:any,name:any,price:any,des:any,tipo:any){
+  addcart(id:any,name:any,price:any,des:any,tipo:any){//funcion para cargar un producto al carrito de compras
 
     this.CartService.addcart(id,name,price,des,tipo)
   this.rutas.navigateByUrl('/viewcart')
