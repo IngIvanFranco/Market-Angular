@@ -84,7 +84,7 @@
                                 *ngFor="let category of categories; let i = index; let lastIndex = last"
                                 class="menu-item-has-children has-mega-menu">
 
-                                    <a class="cate" routerLink="products/{{category.id_categoria}}">
+                                    <a class="cate" (click)="consultarcategoria(category.id_categoria)" >
                                         <i class="icon-laundry"></i> {{category.nombre_categoria}}
                                     </a>
 
@@ -94,12 +94,13 @@
 
                                         class="mega-menu__column">
 
-                                            <h4>
-                                                <span class="sub-toggle"></span>
+                                            <h4 class="titusubmenu">
+                                               {{category.nombre_categoria}}
                                             </h4>
 
-                                            <ul class="mega-menu__list" >
-
+                                            <ul class="mega-menu__list" *ngFor="let sub of subcategories;" >
+                                               <a (click)="subcate(sub.id_subcategoria)" *ngIf="sub.categoria_id == category.id_categoria" ><li class="subcate" ><i class="icon-circle"></i> - {{sub.nombre_subcategoria}}</li></a>
+                                           
                                             </ul>
 
                                         </div>

@@ -73,7 +73,7 @@
 									*ngFor="let category of categories; let lastIndex = last"
 					                class="current-menu-item menu-item-has-children">
 
-					                	<a routerLink="products/{{category.id_categoria}}"><strong class="categ">{{category.nombre_categoria}}</strong></a>
+					                	<a (click)="consultarcategoria(category.id_categoria)"><strong class="categ">{{category.nombre_categoria}}</strong></a>
 
 
 

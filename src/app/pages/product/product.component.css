@@ -50,5 +50,10 @@ color: white;
 @media (max-width: 600px) {
   .card{
     width: 100%;
+
+  }
+
+  .imgp{
+    width: 100%;
   }
 }

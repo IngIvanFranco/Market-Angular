@@ -39,6 +39,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 import { RespassComponent } from './pages/respass/respass.component';
+import { ProductssubComponent } from './pages/productssub/productssub.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { RespassComponent } from './pages/respass/respass.component';
     ProfileComponent,
     OrderdetailComponent,
     EditprofileComponent,
-    RespassComponent
+    RespassComponent,
+    ProductssubComponent
   ],
   imports: [
     BrowserModule,

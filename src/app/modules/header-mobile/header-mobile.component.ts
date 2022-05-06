@@ -29,7 +29,7 @@ fomrmularioconsulta:FormGroup;
     private categoriesService: CategoriesService,
     private fomulario: FormBuilder,
     private rutas:Router,
-    public cartconex:CartService) { 
+    public cartconex:CartService) {
 
       this.fomrmularioconsulta= this.fomulario.group(
         {
@@ -74,32 +74,47 @@ fomrmularioconsulta:FormGroup;
 	}
 
           recibirconsulta(){
-        
-        
+
+
+                    if (this.rutas.url!=`/search/${this.fomrmularioconsulta.value.q}`) {
+
+                      document.location.href=`#/search/${this.fomrmularioconsulta.value.q}`
+                      }
+
+                      window.location.reload()
+
+                      this.totalcart = this.cartconex.totalcarrito(this.cart);
+
+
+            }
+
+
+            consultarcategoria(id:any){
+              if (this.rutas.url!=`/products/${id}`) {
             
-            this.rutas.navigateByUrl(`search/${this.fomrmularioconsulta.value.q}`)
-            this.totalcart = this.cartconex.totalcarrito(this.cart);
+                document.location.href=`#/products/${id}`
+                }
             
+                window.location.reload()
             }
             
-            
-            
-            
-            
+
+
+
             elimaritem(id:any){
-            
+
               this.cart=this.cartconex.eliminarcartitem(id)
               this.totalcart = this.cartconex.totalcarrito(this.cart);
-            
+
             }
-            
-            
+
+
             volver(){
               this.rutas.navigateByUrl('')
-            
-            
+
+
             }
-            
+
 
 
 			}

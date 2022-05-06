@@ -1,18 +1,18 @@
  <!--=====================================
 Top Categoríes
-======================================-->  
+======================================-->
 
-<div 
+<div
 
 class="ps-top-categories">
 
     <div class="container">
-
-        <h3>Categorias del mes</h3>
+<br><br>
+        <h2>Categorias del mes</h2>
 
         <div class="row cont">
 
-            <div 
+            <div
 			*ngFor="let category of categories"
             class="col-xl-2 col-lg-3 col-sm-4 col-6 ">
                 <div class="ps-block--category">
@@ -20,7 +20,7 @@ class="ps-top-categories">
                 	<img src="{{path}}/img/categories/{{category.nombre_categoria}}.jpg" alt="">
                     <p>{{category.nombre_categoria}}</p>
                 </div>
-            </div>    
+            </div>
 
         </div>
     </div>

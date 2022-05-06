@@ -47,3 +47,16 @@ text-transform: capitalize;
 .lg{
   margin-top: -15px;
 }
+
+.titusubmenu{
+text-transform: capitalize;
+}
+
+.subcate{
+  text-transform: capitalize;
+  color: #232F3E;
+  margin: 10px auto;
+}
+.subcate:hover{
+  color: #FCB800 ;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Path } from '../../config';
 
-
+import { SubCategoriesService } from 'src/app/services/sub-categories.service';
 import { CategoriesService } from '../../services/categories.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
 
   path:String = Path.url;
 	categories:Object = null;
+  subcategories:Object = null;
 	render:Boolean = true;
   cart:any[]=[];
   totalcart:any;
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
 	constructor(
     public categoriesService: CategoriesService,
     private rutas:Router,
-    public cartconex:CartService
+    public cartconex:CartService,
+    public subcateservice:SubCategoriesService
     ) {  }
 
 	ngOnInit(): void {
@@ -53,6 +55,11 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  this.subcateservice.consultarsubcategorias().subscribe(res=>{
+    this.subcategories = res
+
+  }, err =>{})
+
 	}
 
 
@@ -62,13 +69,36 @@ export class HeaderComponent implements OnInit {
 let q = <HTMLInputElement> document.getElementById('q');
 let consulta = q.value
 
-this.rutas.navigateByUrl(`search/${consulta}`)
+if (this.rutas.url!=`/search/${consulta}`) {
+
+document.location.href=`#/search/${consulta}`
+}
+
+window.location.reload()
+
 this.totalcart = this.cartconex.totalcarrito(this.cart);
 
 }
 
 
+consultarcategoria(id:any){
+  if (this.rutas.url!=`/products/${id}`) {
 
+    document.location.href=`#/products/${id}`
+    }
+
+    window.location.reload()
+}
+
+subcate(id:any){
+  if (this.rutas.url!=`/productss/${id}`) {
+
+    document.location.href=`#/productss/${id}`
+    }
+
+    window.location.reload()
+  
+}
 
 
 elimaritem(id:any){

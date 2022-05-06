@@ -25,6 +25,7 @@ import { CheckGuard } from './guards/check.guard';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 import { RespassComponent } from './pages/respass/respass.component';
 import { UnloginGuard } from './guards/unlogin.guard';
+import { ProductssubComponent } from './pages/productssub/productssub.component';
 
 const routes: Routes = [
 
@@ -47,7 +48,9 @@ const routes: Routes = [
   { path: 'order/:id', component: OrderdetailComponent, canActivate: [CheckoutGuard] },
   { path: 'editprofile', component: EditprofileComponent, canActivate: [CheckoutGuard] },
   { path: 'respass', component: RespassComponent,canActivate: [UnloginGuard] },
+  { path: 'productss/:id', component: ProductssubComponent },
   { path: '**', pathMatch: 'full', component: Error404Component }
+  
 
 
 ];

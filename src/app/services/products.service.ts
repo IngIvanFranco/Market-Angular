@@ -21,6 +21,12 @@ listarproductocategoria(id:any){
   return this.http.get(this.api+"?listarproductos="+id)
 }
 
+listarproductosubcategoria(id:any){
+  return this.http.get(this.api+"?prodsubcate="+id)
+}
+
+
+
 getData(){
   return this.product
 }

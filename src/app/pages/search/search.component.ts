@@ -30,19 +30,21 @@ carga:boolean=false
    }
 
   ngOnInit(): void {
-    Loading.standard('Cargando Pagina')
- this.q = this.datosrutas.snapshot.paramMap.get('q')//asigna el dato que viene por la ruta a una variable
- this.conex.productosconsulta(this.q).subscribe(arg => {// envia la variable al servicio para consultar que productos concuerdan con la consulta
-   this.productos = arg
 
-   Loading.remove();
- });
- this.carga=true
-
+this.cargarconsulta()
 
   }
 
+cargarconsulta(){
+  Loading.standard('Cargando Pagina')
+  this.q = this.datosrutas.snapshot.paramMap.get('q')//asigna el dato que viene por la ruta a una variable
+  this.conex.productosconsulta(this.q).subscribe(arg => {// envia la variable al servicio para consultar que productos concuerdan con la consulta
+    this.productos = arg
 
+    Loading.remove();
+  });
+  this.carga=true
+}
 
 
   addcart(id:any,name:any,price:any,des:any,tipo:any ){// funcion para agregar el producto al carrito de compra
