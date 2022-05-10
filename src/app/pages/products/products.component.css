@@ -14,3 +14,7 @@
 .card{
   padding: 20px;
 }
+
+.card-title{
+  text-transform: uppercase;
+}

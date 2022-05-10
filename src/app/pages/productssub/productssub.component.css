@@ -19,3 +19,8 @@
   text-align: center;
   margin:25px auto;
 }
+
+
+.card-title{
+  text-transform: uppercase;
+}

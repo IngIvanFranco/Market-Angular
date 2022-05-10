@@ -55,7 +55,7 @@
       alt="..."
     />
     <a
-      *ngIf="produc.id_opc_subcate != 154 && produc.id_categoriaproducts != 7"
+      *ngIf="produc.id_categoriaproducts != 9 && produc.id_categoriaproducts != 7"
       (click)="
         addcart(
           produc.id,
@@ -70,7 +70,7 @@
     >
 
     <a
-      *ngIf="produc.id_opc_subcate == 154 || produc.id_categoriaproducts == 7"
+      *ngIf="produc.id_categoriaproducts == 9 || produc.id_categoriaproducts == 7"
       class="btn btn-success"
       href="mailto:direccionoperativa@invercomes.com.co?subject=cotizacion%20producto%20{{
         produc.name

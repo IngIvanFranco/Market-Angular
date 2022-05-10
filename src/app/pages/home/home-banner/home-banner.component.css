@@ -1,0 +1,15 @@
+.dismovil{
+    display: none;
+}
+
+@media (max-width: 850px) {
+.compu{
+  display:none;
+}
+
+.dismovil{
+  display: block;
+}
+
+
+}
