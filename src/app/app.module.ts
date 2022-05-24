@@ -40,6 +40,7 @@ import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component'
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 import { RespassComponent } from './pages/respass/respass.component';
 import { ProductssubComponent } from './pages/productssub/productssub.component';
+import { FilterpromohomePipe } from './pipes/filterpromohome.pipe';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { ProductssubComponent } from './pages/productssub/productssub.component'
     OrderdetailComponent,
     EditprofileComponent,
     RespassComponent,
-    ProductssubComponent
+    ProductssubComponent,
+    FilterpromohomePipe
   ],
   imports: [
     BrowserModule,

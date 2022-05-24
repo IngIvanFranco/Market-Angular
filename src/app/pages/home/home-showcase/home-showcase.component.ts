@@ -13,6 +13,7 @@ export class HomeShowcaseComponent implements OnInit {
 
   productos:any;
   path:String = Path.url;
+  filterhome:string = ''
 
 
    	constructor(
@@ -34,9 +35,9 @@ export class HomeShowcaseComponent implements OnInit {
 
 
 
-  addcart(id:any,name:any,price:any,des:any,tipo:any ){
+ public async addcart(id:any,name:any,price:any,des:any,tipo:any ){
 
-let carrito=    this.conexcart.addcart(id,name,price,des,tipo)
+let carrito =    this.conexcart.addcart(id,name,price,des,tipo)
    this.conexcart.totalcarrito(carrito)
 
 

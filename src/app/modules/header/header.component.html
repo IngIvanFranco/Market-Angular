@@ -74,7 +74,7 @@
 
                         <div class="menu__toggle">
                         	<i class="icon-menu"></i>
-                        	<span> Compra por categoria</span>
+                        	<span> Compra por categoría</span>
                         </div>
 
                         <div class="menu__content">
@@ -100,7 +100,7 @@
 
                                             <ul class="mega-menu__list" *ngFor="let sub of subcategories;" >
                                                <a (click)="subcate(sub.id_subcategoria)" *ngIf="sub.categoria_id == category.id_categoria" ><li class="subcate" ><i class="icon-circle"></i> - {{sub.nombre_subcategoria}}</li></a>
-                                           
+
                                             </ul>
 
                                         </div>
@@ -190,7 +190,7 @@
 
                                 <div class="ps-cart__footer">
                                     <figure>
-                                    	<a class="ps-btn" routerLink="/viewcart">View Cart</a>
+                                    	<a class="ps-btn" routerLink="/viewcart">Ver Carrito</a>
                                     	<a class="ps-btn" routerLink="/checkout">Checkout</a>
                                     </figure>
 

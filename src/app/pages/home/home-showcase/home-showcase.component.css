@@ -25,3 +25,15 @@ border-radius: 5px;
 .card-title{
   text-transform: uppercase;
 }
+
+.coninput{
+  width: 80%;
+  margin: 20px auto;
+}
+
+.coninput input{
+  border-radius: 7px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow:  5px 5px 10px #878787,
+               -5px -5px 10px #ffffff;
+}
