@@ -3,10 +3,10 @@
     <span class="visually-hidden"></span>
   </div>
 
-
+  <input type="text" placeholder="Busqueda Rapida..." name="filterhome" class="form-control" [(ngModel)]="filterhome" >
 <div class="container" *ngIf="cargue">
 
-<div class="card mb-3" style="max-width: 540px;" *ngFor="let producto of productos">
+<div class="card mb-3" style="max-width: 370px;" *ngFor="let producto of productos | filterpromohome:filterhome">
   <div class="row g-0">
     <div class="col-md-4">
      <a routerLink="/product/{{producto.id}}"> <img src="{{path}}/img/products/product/{{producto.id}}.jpg" class="img-fluid rounded-start ago" alt="{{producto.name}}"> </a>

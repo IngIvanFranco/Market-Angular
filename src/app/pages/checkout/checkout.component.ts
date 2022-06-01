@@ -168,6 +168,8 @@ export class CheckoutComponent implements OnInit {
           Loading.standard('Generando orden')
           this.ordenconex.crearorden(this.formulariodeorden.value, this.totalvlr, this.usrid).subscribe(res => {
             this.ordenid = res['orden'];
+            console.log(res);
+
             this.creardetalleorden(this.ordenid)
             Loading.remove()
             if (this.formulariodeorden.value.metodopago == 2 || this.formulariodeorden.value.metodopago == 3) {

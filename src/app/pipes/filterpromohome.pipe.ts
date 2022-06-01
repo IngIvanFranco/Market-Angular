@@ -10,6 +10,7 @@ export class FilterpromohomePipe implements PipeTransform {
     const resultpost = []
     for (const post of value){
       if(arg === '' || arg.length < 3) return value
+
 if (post.name.toLowerCase().indexOf(arg.toLowerCase()) > -1 ){
 resultpost.push(post);
 }

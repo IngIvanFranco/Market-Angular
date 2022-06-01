@@ -24,3 +24,10 @@
 .card-title{
   text-transform: uppercase;
 }
+
+input{
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+
+}

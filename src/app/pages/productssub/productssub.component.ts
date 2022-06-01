@@ -15,6 +15,7 @@ export class ProductssubComponent implements OnInit {
   productos:any
   cargue:boolean
   path:String = Path.url;
+  filterhome:string =''
     constructor(
       private datosrutas:ActivatedRoute,
       private productosservicios:ProductsService,

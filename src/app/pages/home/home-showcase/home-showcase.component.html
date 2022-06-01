@@ -3,7 +3,10 @@
 <div class="coninput">
 <input type="text" placeholder="Busqueda Rapida..." name="filterhome" class="form-control" [(ngModel)]="filterhome" >
 </div>
-  <div  class="cont">
+
+
+
+<div  class="cont">
     <div class="card" style="width: 18rem;" *ngFor="let producto of productos | filterpromohome:filterhome">
 
      <a routerLink="product/{{producto.id}}"  >
@@ -16,8 +19,6 @@
 
         <button class="btn btn-primary" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo)">Add Cart</button>
       </div>
-
-
 
     </div>
 

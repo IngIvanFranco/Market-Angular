@@ -15,7 +15,7 @@ export let Api = {
 
 
  //url: 'http://localhost/apimarket_angular-php/'
-  //  url: 'http://54.174.81.71/api/'
+  //url: 'https://54.174.81.71/api/'
  url: 'https://invercomes.com.co/tatiana/apimarket_angular-php/'
 }
 
