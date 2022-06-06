@@ -202,7 +202,7 @@ export class CheckoutComponent implements OnInit {
       mensaje: `
 
           <div style="background:#ccc; width:80%; margin:auto; padding:30px; border-radius:10px;  ">
-          <img src="https://invercomes.com.co/img/Logo-Invercomes-Horizontal.png" style="width:100%">
+          <img src="https://invercomes.com.co/assets/img/varios/Logo-Invercomes-Horizontal.png" style="width:100%">
           <h2 style="">Orden de compra #${this.ordenid}</h2>
           <p>Se ha generado una orden de compra por valor de $ ${this.totalvlr - this.pointsform}</p>
           <p>Nombre: ${this.customer[0].name} <br>
@@ -268,7 +268,7 @@ export class CheckoutComponent implements OnInit {
       mensaje: `
 
           <div style="background:#ccc; width:80%; margin:auto; padding:30px; border-radius:10px;  ">
-          <img src="https://invercomes.com.co/img/Logo-Invercomes-Horizontal.png" style="width:100%">
+          <img src="https://invercomes.com.co/assets/img/varios/Logo-Invercomes-Horizontal.png" style="width:100%">
           <h2 style="">Orden de compra #${this.ordenid}</h2>
           <p>Se ha generado una orden de compra por valor de $ ${this.totalvlr - this.pointsform}</p>
           <p>Nombre: ${this.customer[0].name} <br>
@@ -304,9 +304,9 @@ export class CheckoutComponent implements OnInit {
 
     let email
     if (metpago == 2) { // dependiendo del metodo de pago asigna el correo correspondiente a la variable
-      email = 'direcciontics@invercomes.com.co'   //su solucion comercial@susolucionsa.com.co
+      email = 'comercial@susolucionsa.com.co'   //su solucion comercial@susolucionsa.com.co
     } else if (metpago == 3) {
-      email = 'ingeniero.ivanfr@gmail.com'   //femseapto femseapto@ganagana.com.co
+      email = 'femseapto@ganagana.com.co'   //femseapto femseapto@ganagana.com.co
     }
 
 
@@ -316,7 +316,7 @@ export class CheckoutComponent implements OnInit {
       mensaje: `
 
               <div style="background:#ccc; width:80%; margin:auto; padding:30px; border-radius:10px;  ">
-              <img src="https://invercomes.com.co/img/Logo-Invercomes-Horizontal.png" style="width:100%">
+              <img src="https://invercomes.com.co/assets/img/varios/Logo-Invercomes-Horizontal.png" style="width:100%">
               <h2 style="">Orden de compra #${this.ordenid}</h2>
               <p>adjuntamos orden de compra para su respectiva validacion</p>
               <p>Se ha generado una orden de compra por valor de $ ${this.totalvlr - this.pointsform}</p>

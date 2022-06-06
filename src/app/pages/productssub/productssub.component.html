@@ -1,33 +1,90 @@
+<div class="spinner-border text-success" role="status" *ngIf="!cargue">
+  <span class="visually-hidden"></span>
+</div>
 
-  <div class="spinner-border text-success" role="status" *ngIf="!cargue">
-    <span class="visually-hidden"></span>
-  </div>
-
-  <input type="text" placeholder="Busqueda Rapida..." name="filterhome" class="form-control" [(ngModel)]="filterhome" >
+<input
+  type="text"
+  placeholder="Busqueda Rapida..."
+  name="filterhome"
+  class="form-control"
+  [(ngModel)]="filterhome"
+/>
 <div class="container" *ngIf="cargue">
-
-<div class="card mb-3" style="max-width: 370px;" *ngFor="let producto of productos | filterpromohome:filterhome">
-  <div class="row g-0">
-    <div class="col-md-4">
-     <a routerLink="/product/{{producto.id}}"> <img src="{{path}}/img/products/product/{{producto.id}}.jpg" class="img-fluid rounded-start ago" alt="{{producto.name}}"> </a>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{producto.name}}</h5>
-        <p class="card-text" *ngIf="(producto.id_categoriaproducts != 9) && (producto.id_categoriaproducts != 7)"  >Precio:<br>$ {{producto.price|number}} Cop</p>
-        <p class="card-text" *ngIf="(producto.id_categoriaproducts == 9) || (producto.id_categoriaproducts == 7)"  >Producto disponible por cotización</p>
-        <p class="card-text" *ngIf="producto.descuento > 0">Descuento:<br>- {{producto.descuento}} %</p>
-        <button type="button" *ngIf="(producto.id_categoriaproducts != 9) && (producto.id_categoriaproducts != 7)" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo)"class="btn btn-primary">Add Cart</button>
-        <a *ngIf="(producto.id_categoriaproducts == 9) || (producto.id_categoriaproducts == 7)" class="btn btn-success" href="mailto:direccionoperativa@invercomes.com.co?subject=cotizacion%20producto%20{{producto.name}}&message={{producto.name}}">Cotizar</a>
+  <div
+    class="card mb-3"
+    style="max-width: 370px"
+    *ngFor="let producto of productos | filterpromohome: filterhome"
+  >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <a routerLink="/product/{{ producto.id }}">
+          <img
+            src="{{ path }}/img/products/product/{{ producto.id }}.jpg"
+            class="img-fluid rounded-start ago"
+            alt="{{ producto.name }}"
+          />
+        </a>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.name }}</h5>
+          <p
+            class="card-text"
+            *ngIf="
+              producto.id_categoriaproducts != 9 &&
+              producto.id_categoriaproducts != 7
+            "
+          >
+            Precio:<br />$ {{ producto.price | number }} Cop
+          </p>
+          <p
+            class="card-text"
+            *ngIf="
+              producto.id_categoriaproducts == 9 ||
+              producto.id_categoriaproducts == 7
+            "
+          >
+            Producto disponible por cotización
+          </p>
+          <p class="card-text" *ngIf="producto.descuento > 0">
+            Descuento:<br />- {{ producto.descuento }} %
+          </p>
+          <button
+            type="button"
+            *ngIf="
+              producto.id_categoriaproducts != 9 &&
+              producto.id_categoriaproducts != 7
+            "
+            (click)="
+              addcart(
+                producto.id,
+                producto.name,
+                producto.price,
+                producto.descuento,
+                producto.ropa_tipo
+              )
+            "
+            class="btn btn-primary"
+          >
+            Add Cart
+          </button>
+          <a
+            *ngIf="
+              producto.id_categoriaproducts == 9 ||
+              producto.id_categoriaproducts == 7
+            "
+            class="btn btn-success"
+            href="mailto:direccionoperativa@invercomes.com.co?subject=cotizacion%20producto%20{{
+              producto.name
+            }}&message={{ producto.name }}"
+            >Cotizar</a
+          >
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-
-</div>
-
-
-<div class="sinpro" role="status"  *ngIf="productos['success']==0" >
- <h5>No tenemos productos en esta categoria</h5>
+<div class="sinpro" role="status" *ngIf="productos['success'] == 0">
+  <h5>No tenemos productos en esta categoria</h5>
 </div>

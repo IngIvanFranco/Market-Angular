@@ -1,0 +1,64 @@
+.container2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 40px auto;
+  width: 90%;
+}
+
+.ago{
+
+  object-fit: contain;
+
+}
+
+.card{
+  padding: 10px;
+  position: relative;
+  margin: 10px auto;
+}
+
+.ggpoints{
+  position: absolute;
+  z-index: 10;
+  width: 80px;
+  top: 0;
+  left: 0;
+
+}
+
+.costo{
+  text-decoration: line-through red;
+}
+
+.card-title{
+  text-transform: uppercase;
+}
+
+.redi{
+  color:black
+}
+.contimgban{
+width: 100%;
+margin: auto;
+background: linear-gradient(to right, #FFE80A,  #3D6D53 );
+background-size: 600% 400%;
+padding: 5px;
+animation: bgmovil 5s ease infinite;
+border-radius: 7px;
+}
+@keyframes bgmovil{
+  0% {background-position: 0% 50%;}
+  50%{background-position: 100% 50%;}
+  100%{background-position: 0% 50% ;}
+  }
+
+
+.imgban{
+  border-radius: 7px;
+width: 100%;
+}
+
+
+
+

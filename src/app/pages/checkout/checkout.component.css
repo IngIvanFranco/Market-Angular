@@ -10,6 +10,34 @@ h2{
   text-align: center;
 }
 
+.contimgban{
+  width: 80%;
+  padding: 3px;
+  margin: auto;
+  background: linear-gradient(to right, #FFE80A,  #3D6D53 );
+  background-size: 600% 400%;
+  border-radius: 7px;
+
+  animation: bgmovil 5s ease infinite;
+
+  }
+
+  .ggpoints{
+    width: 50px;
+  }
+  @keyframes bgmovil{
+    0% {background-position: 0% 50%;}
+    50%{background-position: 100% 50%;}
+    100%{background-position: 0% 50% ;}
+    }
+
+
+  .imgban{
+    border-radius: 7px;
+  width: 100%;
+  }
+
+
 .contenbtn{
   width: 80%;
   margin: 20px auto;

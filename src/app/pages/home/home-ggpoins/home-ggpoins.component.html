@@ -1,0 +1,24 @@
+<div class="contimgban">
+<img src="{{path}}/img/varios/homebanner.png" class="imgban">
+</div>
+<div class="container2">
+
+  <div class="card" style="width: 18rem;" *ngFor="let producto of products">
+    <img src="{{path}}/img/payment-method/ggpoints.png" class="ggpoints">
+    <a routerLink="/product/{{producto.id}}"> <img src="{{path}}/img/products/product/{{producto.id}}.jpg" class="img-fluid rounded-start ago" alt="{{producto.name}}"> </a>
+    <div class="card-body">
+            <h5 class="card-title ">{{producto.name}}</h5>
+            <p class="card-text costo">$ {{producto.price| number}} Cop</p>
+      <p class="card-text"> <small> Redime 5.000 puntos y llevalo por:</small></p>
+      <p class="card-text redi">$ {{(producto.price-50000)| number}} Cop</p>
+
+      <button type="button"  (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo)"class="btn btn-primary">Add Cart</button>
+    </div>
+  </div>
+
+
+
+
+
+  </div>
+

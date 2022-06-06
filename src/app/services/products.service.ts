@@ -25,7 +25,9 @@ listarproductosubcategoria(id:any){
   return this.http.get(this.api+"?prodsubcate="+id)
 }
 
-
+listarproductosggpromo(){
+  return this.http.get(this.api+"?productosggpromo")
+}
 
 getData(){
   return this.product

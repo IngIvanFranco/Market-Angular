@@ -1,4 +1,6 @@
+
 <div class="container">
+
   <div class="contenbtn">
     <button type="button" routerLink="/" class="btn btn-primary">
       Continuar Comprando
@@ -95,11 +97,11 @@
         />
       </div>
     </div>
-    <div *ngIf="points > 0">
-      <h3>Valor de GGPOINTS a redimir</h3>
+   <!-- <div >
+      <h3>Codigo  Promocional </h3>
       <div class="points" id="ggpoint">
         <label for="puntos" class="control-label"
-          >GGpoints ${{ points | number }}</label
+          >Escribe tu codigo <img src="{{path}}/img/payment-method/ggpoints.png" class="ggpoints"></label
         >
         <input
           type="number"
@@ -119,7 +121,7 @@
     <div class="alert alert-success" role="alert" *ngIf="alerpoint == false">
       Valor aprobado
     </div>
-
+-->
     <h3>Metodo de pago</h3>
 
     <div class="metodospago">
@@ -191,4 +193,6 @@
     </button>
   </form>
 </div>
-
+<div class="contimgban">
+  <img src="{{path}}/img/varios/homebanner.png" class="imgban">
+  </div>

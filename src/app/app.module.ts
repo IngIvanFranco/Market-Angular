@@ -41,6 +41,9 @@ import { EditprofileComponent } from './pages/editprofile/editprofile.component'
 import { RespassComponent } from './pages/respass/respass.component';
 import { ProductssubComponent } from './pages/productssub/productssub.component';
 import { FilterpromohomePipe } from './pipes/filterpromohome.pipe';
+import { HomeGgpoinsComponent } from './pages/home/home-ggpoins/home-ggpoins.component';
+
+
 
 
 @NgModule({
@@ -59,6 +62,7 @@ import { FilterpromohomePipe } from './pipes/filterpromohome.pipe';
     HomeBannerComponent,
     HomeFeaturesComponent,
     HomePromotionsComponent,
+    HomeGgpoinsComponent,
 
     HomeTopCategoriesComponent,
     HomeShowcaseComponent,
@@ -78,7 +82,8 @@ import { FilterpromohomePipe } from './pipes/filterpromohome.pipe';
     EditprofileComponent,
     RespassComponent,
     ProductssubComponent,
-    FilterpromohomePipe
+    FilterpromohomePipe,
+
   ],
   imports: [
     BrowserModule,
@@ -86,6 +91,7 @@ import { FilterpromohomePipe } from './pipes/filterpromohome.pipe';
     FormsModule,
     ReactiveFormsModule,
        HttpClientModule,
+       
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -5,7 +5,7 @@ export let Path = {
 
 	//url: 'http://localhost:4200/assets/'
  // url: 'http://54.174.81.71/assets/'
-	url: 'https://invercomes.com.co/tatiana/assets/'
+	url: 'https://invercomes.com.co/assets/'
 }
 
 /*=============================================
@@ -16,7 +16,7 @@ export let Api = {
 
  //url: 'http://localhost/apimarket_angular-php/'
   //url: 'https://54.174.81.71/api/'
- url: 'https://invercomes.com.co/tatiana/apimarket_angular-php/'
+ url: 'https://invercomes.com.co/apimarket_angular-php/'
 }
 
 export let ApiMail = {
