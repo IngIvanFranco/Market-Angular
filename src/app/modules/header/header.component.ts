@@ -33,6 +33,19 @@ export class HeaderComponent implements OnInit {
     ) {  }
 
 	ngOnInit(): void {
+    this.categoriesService.getData()
+		.subscribe(resp => {
+
+			this.categories = resp;
+console.log(resp+"holis");
+
+		})
+
+    this.subcateservice.consultarsubcategorias().subscribe(res=>{
+      this.subcategories = res
+
+    }, err =>{})
+
     if (localStorage.getItem("cart") === null) {
 
       localStorage.setItem("cart","")
@@ -45,20 +58,12 @@ export class HeaderComponent implements OnInit {
     this.cartconex.asignarcarrito(carok)
     this.cart = this.cartconex.carrito
 
-		this.categoriesService.getData()
-		.subscribe(resp => {
 
-			this.categories = resp;
-
-		})
 
 
   }
 
-  this.subcateservice.consultarsubcategorias().subscribe(res=>{
-    this.subcategories = res
 
-  }, err =>{})
 
 	}
 
@@ -97,7 +102,7 @@ subcate(id:any){
     }
 
     window.location.reload()
-  
+
 }
 
 
