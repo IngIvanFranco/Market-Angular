@@ -32,27 +32,102 @@ export class CartService {
     return this.totalcart
   }
 
-addcart(id:any,name:any,price:any,des:any,tipo:any ){
- localStorage.removeItem('cart')
+addcart(id:any,name:any,price:any,des:any,tipo:any, catee:any ,subcate:any,opccate:any ){
+  localStorage.removeItem('cart')
+  var fecha = new Date();
+  var diasiniva = new Date(2022,5,17)
 
-this.validacion= this.carrito.find( item=> item.id==id)
-  if (this.validacion === undefined ) {
-    this.carrito.push({
-      id,
-      name,
-      price,
-      qty:1,
-      des,
-      tipo,
-      talla:''
-    })
 
-  }else{
-    let index = this.carrito.map(item=>item.id).indexOf(id)
-    let canti = this.carrito[index].qty;
-    let cantidadtotal = Number(canti) + 1;
-    this.cambiarcantidad(cantidadtotal,index)
+  if (fecha.getDate() == diasiniva.getDate()) {//es dia sin iva?? 
+   
+    if (  (opccate== 35 && price<=1815400 && id != 13 && id != 241 && id != 3632 && id != 3605  && id != 3604 )
+    || (opccate== 120 || opccate== 24 || opccate== 25 || opccate== 23 
+    || opccate== 28 || opccate== 27) 
+    || (id== 4927  )
+    
+    || (catee== 1 || catee== 3 || catee== 4 
+    || catee== 6 || catee== 7 || catee== 8 
+    || catee== 9 || catee== 11 || catee== 10 )
+    || (subcate== 2 || subcate== 15  || subcate== 28)
+    )  {
+
+      this.validacion= this.carrito.find( item=> item.id==id)
+      if (this.validacion === undefined ) {
+        this.carrito.push({
+          id,
+          name,
+          price,
+          qty:1,
+          des,
+          tipo,
+          talla:''
+        })
+    
+      }else{
+        let index = this.carrito.map(item=>item.id).indexOf(id)
+        let canti = this.carrito[index].qty;
+        let cantidadtotal = Number(canti) + 1;
+        this.cambiarcantidad(cantidadtotal,index)
+      }
+
+      //aqui entran los productos q no tienen descuento del dia sin iva asi q se agregan comun y corriente al carrito
+    }else{
+
+let precio = price/1.19
+      this.validacion= this.carrito.find( item=> item.id==id)
+      if (this.validacion === undefined ) {
+        this.carrito.push({
+          id,
+          name,
+          price:precio,
+          qty:1,
+          des,
+          tipo,
+          talla:''
+        })
+    
+      }else{
+        let index = this.carrito.map(item=>item.id).indexOf(id)
+        let canti = this.carrito[index].qty;
+        let cantidadtotal = Number(canti) + 1;
+        this.cambiarcantidad(cantidadtotal,index)
+      }
+
+   
+   
+   
+      //aqui entran los productos q si tienen descuento del dia sin iva asi q se les modifica el valor
+    }
+
+
+  }else{//no es dia si iva
+     
+
+    this.validacion= this.carrito.find( item=> item.id==id)
+    if (this.validacion === undefined ) {
+      this.carrito.push({
+        id,
+        name,
+        price,
+        qty:1,
+        des,
+        tipo,
+        talla:''
+      })
+  
+    }else{
+      let index = this.carrito.map(item=>item.id).indexOf(id)
+      let canti = this.carrito[index].qty;
+      let cantidadtotal = Number(canti) + 1;
+      this.cambiarcantidad(cantidadtotal,index)
+    }
+
+
   }
+ 
+  
+
+
 
   localStorage.setItem('cart',JSON.stringify(this.carrito))
 

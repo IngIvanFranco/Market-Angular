@@ -35,9 +35,9 @@ export class HomeShowcaseComponent implements OnInit {
 
 
 
- public async addcart(id:any,name:any,price:any,des:any,tipo:any ){
+ public async addcart(id:any,name:any,price:any,des:any,tipo:any,cate,subcate,opccate ){
 
-let carrito =    this.conexcart.addcart(id,name,price,des,tipo)
+let carrito =    this.conexcart.addcart(id,name,price,des,tipo,cate,subcate,opccate)
    this.conexcart.totalcarrito(carrito)
 
 

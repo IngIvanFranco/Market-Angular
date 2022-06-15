@@ -110,7 +110,7 @@
             <h6 class="card-title" *ngIf="item.tipo != 0">
               Talla: {{ item.talla }}
             </h6>
-            <p class="card-text">$ {{ item.qty * item.price | number }}</p>
+            <p class="card-text">$ {{ item.qty * item.price | number:'1.0-0' }}</p>
 
             <label for="validationDefault01" class="form-label">Cantidad</label>
             <input
@@ -142,7 +142,7 @@
       />
       <div class="card-body">
         <h5 class="card-title">Precio total:</h5>
-        <p class="card-text">${{ vlrtotal | number }} Cop</p>
+        <p class="card-text">${{ vlrtotal | number:'1.0-0' }} Cop</p>
         <button type="button" routerLink="/checkout" class="btn btn-success">
           Pagar
         </button>

@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
 		.subscribe(resp => {
 
 			this.categories = resp;
-console.log(resp+"holis");
+
 
 		})
 

@@ -30,9 +30,9 @@ export class HomeGgpoinsComponent implements OnInit {
 
 
 
- public  addcart(id:any,name:any,price:any,des:any,tipo:any ){
+ public  addcart(id:any,name:any,price:any,des:any,tipo:any,cate,subcate,opcate ){
 
-  let carrito =    this.conexcart.addcart(id,name,price,des,tipo)
+  let carrito =    this.conexcart.addcart(id,name,price,des,tipo,cate,subcate,opcate)
      this.conexcart.totalcarrito(carrito)
 
 

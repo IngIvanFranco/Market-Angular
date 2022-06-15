@@ -12,7 +12,9 @@
       <p class="card-text"> <small> Redime 5.000 puntos y llevalo por:</small></p>
       <p class="card-text redi">$ {{(producto.price-50000)| number}} Cop</p>
 
-      <button type="button"  (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo)"class="btn btn-primary">Add Cart</button>
+      <button type="button"  (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo, producto.id_categoriaproducts,
+      producto.id_subcategoria_products,
+      producto.id_opc_subcate)"class="btn btn-primary">Add Cart</button>
     </div>
   </div>
 

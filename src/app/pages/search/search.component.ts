@@ -47,9 +47,9 @@ cargarconsulta(){
 }
 
 
-  addcart(id:any,name:any,price:any,des:any,tipo:any ){// funcion para agregar el producto al carrito de compra
+  addcart(id:any,name:any,price:any,des:any,tipo:any,cate,subcate,opccate ){// funcion para agregar el producto al carrito de compra
 
-     this.conexcart.addcart(id,name,price,des,tipo)
+     this.conexcart.addcart(id,name,price,des,tipo,cate,subcate,opccate)
 
 
 this.rutas.navigateByUrl('/viewcart')

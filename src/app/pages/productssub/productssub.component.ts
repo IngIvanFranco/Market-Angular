@@ -43,9 +43,9 @@ export class ProductssubComponent implements OnInit {
   this.cargue=true;
     }
   
-    addcart(id:any,name:any,price:any,des:any,tipo:any){//funcion para cargar un producto al carrito de compras
+    addcart(id:any,name:any,price:any,des:any,tipo:any,cate,subcate,opcate){//funcion para cargar un producto al carrito de compras
   
-      this.CartService.addcart(id,name,price,des,tipo)
+      this.CartService.addcart(id,name,price,des,tipo,cate,subcate,opcate)
     this.rutas.navigateByUrl('/viewcart')
   
     }

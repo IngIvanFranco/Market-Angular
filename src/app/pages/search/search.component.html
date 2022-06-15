@@ -11,7 +11,7 @@
       <p class="card-text desc" *ngIf="producto.descuento > 0">-{{producto.descuento}}% off</p>
       <p class="card-text" *ngIf="(producto.id_categoriaproducts != 9) && (producto.id_categoriaproducts != 7)" >$ {{producto.price | number | lowercase}}</p>
       <p class="card-text" *ngIf="(producto.id_categoriaproducts == 9) || (producto.id_categoriaproducts == 7)"  >Producto disponible por cotización</p>
-      <button class="btn btn-primary" *ngIf="(producto.id_categoriaproducts != 9) && (producto.id_categoriaproducts != 7)" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo)">Add Cart</button>
+      <button class="btn btn-primary" *ngIf="(producto.id_categoriaproducts != 9) && (producto.id_categoriaproducts != 7)" (click)="addcart(producto.id,producto.name,producto.price,producto.descuento,producto.ropa_tipo,producto.id_categoriaproducts,producto.id_subcategoria_products,producto.id_opc_subcate)">Add Cart</button>
       <a *ngIf="(producto.id_categoriaproducts == 9) || (producto.id_categoriaproducts == 7)" class="btn btn-success" href="mailto:direccionoperativa@invercomes.com.co?subject=cotizacion%20producto%20{{producto.name}}&message={{producto.name}}">Cotizar</a>
     </div>
   </div>

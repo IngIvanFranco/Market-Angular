@@ -39,8 +39,8 @@ export class ProductComponent implements OnInit {
 
 
 
-  addcart(id:any,name:any,price:any,des:any,tipo:any ){//funcion para agregar un producto al carrito de compras
-   this.cart.addcart(id,name,price,des,tipo);
+  addcart(id:any,name:any,price:any,des:any,tipo:any,cate,subcate,opcate ){//funcion para agregar un producto al carrito de compras
+   this.cart.addcart(id,name,price,des,tipo,cate,subcate,opcate);
    this.rutas.navigateByUrl('/viewcart')
   }
 
