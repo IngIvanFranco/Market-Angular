@@ -41,7 +41,7 @@ addcart(id:any,name:any,price:any,des:any,tipo:any, catee:any ,subcate:any,opcca
   if (fecha.getDate() == diasiniva.getDate()) {//es dia sin iva?? 
    
     if (  (opccate== 35 && price<=1815400 && id != 13 && id != 241 && id != 3632 && id != 3605  && id != 3604 )
-    || (opccate== 120 || opccate== 24 || opccate== 25 || opccate== 23 
+    || (opccate== 120 && price <= 836000 || price >=3040000) || (opccate== 24 || opccate== 25 || opccate== 23 
     || opccate== 28 || opccate== 27) 
     || (id== 4927  )
     
